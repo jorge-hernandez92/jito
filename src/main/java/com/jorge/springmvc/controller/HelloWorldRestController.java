@@ -35,21 +35,6 @@ public class HelloWorldRestController {
         return new ResponseEntity<List<RegisterTomatoDTO>>(users, HttpStatus.OK);
     }
  
- 
-    
-    //-------------------Retrieve Single User--------------------------------------------------------
-     
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RegisterTomatoDTO> getUser(@PathVariable("id") long id) {
-        System.out.println("Fetching User with id " + id);
-        RegisterTomatoDTO user = userService.findById(id);
-        if (user == null) {
-            System.out.println("User with id " + id + " not found");
-            return new ResponseEntity<RegisterTomatoDTO>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<RegisterTomatoDTO>(user, HttpStatus.OK);
-    }
- 
      
      
     //-------------------Create a User--------------------------------------------------------
@@ -70,26 +55,14 @@ public class HelloWorldRestController {
         headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
- 
     
-     
-    //------------------- Update a User --------------------------------------------------------
-     
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<RegisterTomatoDTO> updateUser(@PathVariable("id") long id, @RequestBody RegisterTomatoDTO user) {
-        System.out.println("Updating User " + id);
-         
-        RegisterTomatoDTO currentUser = userService.findById(id);
-         
-        if (currentUser==null) {
-            System.out.println("User with id " + id + " not found");
-            return new ResponseEntity<RegisterTomatoDTO>(HttpStatus.NOT_FOUND);
-        }
- 
-        currentUser.setUsername(user.getUsername());
-         
-        userService.updateUser(currentUser);
-        return new ResponseEntity<RegisterTomatoDTO>(currentUser, HttpStatus.OK);
+    
+    //-------------------LOGIN--------------------------------------------------------
+    
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<RegisterTomatoDTO> login(@RequestBody RegisterTomatoDTO user,    UriComponentsBuilder ucBuilder) {
+        System.out.println("login  user " + user.toString());
+        return new ResponseEntity<RegisterTomatoDTO>(user, HttpStatus.ACCEPTED);
     }
  
 }

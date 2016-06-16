@@ -1,17 +1,53 @@
 'use strict';
 
 
-App.factory('User', ['$resource', function ($resource) {
-	//$resource() function returns an object of resource class
-    return $resource(
-    		'http://localhost:8081/JProJS/user/:id',
-    		//'http://jito-jito.rhcloud.com/user/:id', 
-    		{id: '@id'},//Handy for update & delete. id will be set with id of instance
-    		{
-    			update: {
-    			      method: 'PUT' // To send the HTTP Put request when calling this custom update method.
-    			}
-    			
-    		}
-    );
+App.factory('UserService', ['$http', '$q', function($http, $q){
+	 
+    return {
+        	
+    		//loggin 
+    		login: function(user) {
+    				return $http.post('http://localhost:8081/JProJS/login/', user)
+    						.then(
+    								function(response){
+                                        return response.data;
+                                    }, 
+                                    function(errResponse){
+                                        console.error('Error while fetching user');
+                                        return $q.reject(errResponse);
+                                    }
+    						
+    						);
+    						
+    		},
+ 
+    	
+            fetchAllUsers: function() {
+                    return $http.get('http://localhost:8081/JProJS/user/')
+                            .then(
+                                    function(response){
+                                        return response.data;
+                                    }, 
+                                    function(errResponse){
+                                        console.error('Error while fetching users');
+                                        return $q.reject(errResponse);
+                                    }
+                            );
+            },
+             
+            createUser: function(user){
+                    return $http.post('http://localhost:8081/JProJS/user/', user)
+                            .then(
+                                    function(response){
+                                        return response.data;
+                                    }, 
+                                    function(errResponse){
+                                        console.error('Error while creating user');
+                                        return $q.reject(errResponse);
+                                    }
+                            );
+            },
+         
+    };
+ 
 }]);

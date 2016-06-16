@@ -48,11 +48,13 @@ public class RegisterTServiceImpl implements RegisterTService{
 	}
 	
 	public RegisterTomatoDTO findById(long id) {
+		/*
 		for(RegisterTomatoDTO user : users){
 			if(user.getId() == id){
 				return user;
 			}
-		}
+		}*/
+		System.out.println("aqui se busca que exista usuario");
 		return null;
 	}
 	

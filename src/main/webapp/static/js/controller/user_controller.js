@@ -1,75 +1,62 @@
 'use strict';
-
-App.controller('UserController', ['$scope', 'User', function($scope, User) {
+ 
+App.controller('UserController', ['$scope', 'UserService', function($scope, UserService) {
           var self = this;
-          self.user = new User();
-          self.user.date = new Date(); 
-          
           self.users=[];
-          
-          
-              
-          self.fetchAllUsers = function(){
-        	  self.users = User.query();
-          };
            
-          self.createUser = function(){
-        	  self.user.$save(function(){
-        		  self.fetchAllUsers();
-        	  });
+          
+          self.login = function(user){
+        	  UserService.getSingleUser(user)
+        	  		.then(
+        	  				function(d) {
+        	  					self.userLogin = d;
+        	  				},
+        	  				function(errResponse){
+        	  					console.error('error login');
+        	  				}
+        	  		);
+          }
+               
+          self.fetchAllUsers = function(){
+              UserService.fetchAllUsers()
+                  .then(
+                               function(d) {
+                                    self.users = d;
+                               },
+                                function(errResponse){
+                                    console.error('Error while fetching Currencies');
+                                }
+                       );
           };
-
-          self.updateUser = function(){
-        	  self.user.$update(function(){
-    			  self.fetchAllUsers();
-    		  });
+            
+          self.createUser = function(user){
+              UserService.createUser(user)
+                      .then(
+                      self.fetchAllUsers, 
+                              function(errResponse){
+                                   console.error('Error while creating User.');
+                              } 
+                  );
           };
-
-         self.deleteUser = function(identity){
-        	 var user = User.get({id:identity}, function() {
-        		  user.$delete(function(){
-        			  console.log('Deleting user with id ', identity);
-        			  self.fetchAllUsers();
-        		  });
-        	 });
-          };
-
+ 
           self.fetchAllUsers();
-
+ 
           self.submit = function() {
-              if(self.user.id==null){
-                  console.log('Saving New User', self.user);    
-                  self.createUser();
-              }else{
-    			  console.log('Upddating user with id ', self.user.id);
-                  self.updateUser();
-                  console.log('User updated with id ', self.user.id);
-              }
+        	  console.log('Saving New User', self.user);
+        	  self.createUser(self.user);
+        	  
               self.reset();
           };
-              
-          self.edit = function(id){
-              console.log('id to be edited', id);
-              for(var i = 0; i < self.users.length; i++){
-                  if(self.users[i].id === id) {
-                     self.user = angular.copy(self.users[i]);
-                     break;
-                  }
-              }
-          };
-              
-          self.remove = function(id){
-              console.log('id to be deleted', id);
-              if(self.user.id === id) {//If it is the one shown on screen, reset screen
-                 self.reset();
-              }
-              self.deleteUser(id);
-          };
-
+          
+          self.btnLogin = function() {
+        	  
+        	  self.login(self.user)
+          }
+          
           
           self.reset = function(){
-              self.user= new User();
+              self.user={id:null,username:'',address:'',email:''};
               $scope.myForm.$setPristine(); //reset Form
           };
-
+ 
       }]);
