@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jorge.springmvc.dao.ProduccionDAO;
-import com.jorge.springmvc.dao.UsuarioDAO;
+import com.jorge.springmvc.dao.UserDAO;
 import com.jorge.springmvc.dto.RegisterTomatoDTO;
 import com.jorge.springmvc.model.Produccion;
 import com.jorge.springmvc.model.TipoDeCultivo;
@@ -25,7 +25,7 @@ public class RegisterTServiceImpl implements RegisterTService{
 	ProduccionDAO productionDAO;  
 	
 	@Autowired
-	UsuarioDAO usuarioDAO;
+	UserDAO usuarioDAO;
 	
 	private static final AtomicLong counter = new AtomicLong();
 	
@@ -68,8 +68,6 @@ public class RegisterTServiceImpl implements RegisterTService{
 	}
 	
 	public void saveUser(RegisterTomatoDTO user) {
-		//user.setId(counter.incrementAndGet());
-		//users.add(user);
 		
 		Usuario usuario = usuarioDAO.getUserByLoginAndPassword(user.getUsername(), user.getPassword());
 		

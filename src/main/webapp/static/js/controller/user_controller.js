@@ -6,13 +6,13 @@ App.controller('UserController', ['$scope', 'UserService', function($scope, User
            
           
           self.login = function(user){
-        	  UserService.getSingleUser(user)
+        	  UserService.login(user)
         	  		.then(
         	  				function(d) {
         	  					self.userLogin = d;
         	  				},
         	  				function(errResponse){
-        	  					console.error('error login');
+        	  					console.error('ERROR CON EL USUARIO');
         	  				}
         	  		);
           }
@@ -49,8 +49,9 @@ App.controller('UserController', ['$scope', 'UserService', function($scope, User
           };
           
           self.btnLogin = function() {
-        	  
+        	  console.log("boton de login", self.user)
         	  self.login(self.user)
+        	  console.log("Usuario actual: ",self.userLogin);
           }
           
           

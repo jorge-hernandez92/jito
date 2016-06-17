@@ -79,6 +79,7 @@
 
                       <div class="row">
                           <div class="form-actions floatRight">
+                          	  <button type="button" ng-click="ctrl.btnLogin()" class="btn btn-primary btn-sm">LOGIN</button>
                               <input type="submit"  value="{{!ctrl.user.id ? 'Agregar' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Vaciar Formulario</button>
                           </div>
