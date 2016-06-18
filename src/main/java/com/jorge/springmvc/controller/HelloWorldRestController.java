@@ -40,8 +40,8 @@ public class HelloWorldRestController {
     @Autowired
     UserService userLService; 
     
-    private static Logger logger;
-    
+    //private static Logger logger;
+    private static final Logger logger = LogManager.getLogger(HelloWorldRestController.class);
  
     
     //-------------------Retrieve All Users--------------------------------------------------------
@@ -93,12 +93,11 @@ public class HelloWorldRestController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Usuario> login(HttpSession session, @RequestBody RegisterTomatoDTO user,    UriComponentsBuilder ucBuilder) {
         //System.out.println("login  user " + user.toString());
-    	configureLogger();
+    	
         
         Usuario userLogin = userLService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
         
         if(userLogin != null){
-        	logger.trace("mensaje trace");
         	logger.debug("mensaje debug");
         	logger.info("mensaje info");
         	logger.error("Did it again!");
@@ -110,26 +109,5 @@ public class HelloWorldRestController {
         }
         
     }
-   
-	private void configureLogger(){
-		ConfigurationBuilder<BuiltConfiguration> builder = ConfigurationBuilderFactory.newConfigurationBuilder();
-		builder.setStatusLevel(Level.DEBUG);
-		builder.setConfigurationName("BuilderTest");
-		builder.add(builder.newFilter("ThresholdFilter", Filter.Result.ACCEPT, Filter.Result.NEUTRAL)
-		    .addAttribute("level", Level.DEBUG));
-		AppenderComponentBuilder appenderBuilder = builder.newAppender("Stdout", "CONSOLE").addAttribute("target",
-		    ConsoleAppender.Target.SYSTEM_OUT);
-		appenderBuilder.add(builder.newLayout("PatternLayout")
-		    .addAttribute("pattern", "%d [%t] %-5level: %msg%n%throwable"));
-		appenderBuilder.add(builder.newFilter("MarkerFilter", Filter.Result.DENY, Filter.Result.NEUTRAL)
-		    .addAttribute("marker", "FLOW"));
-		builder.add(appenderBuilder);
-		builder.add(builder.newLogger("org.apache.logging.log4j", Level.DEBUG)
-		    .add(builder.newAppenderRef("Stdout")).addAttribute("additivity", false));
-		builder.add(builder.newRootLogger(Level.DEBUG).add(builder.newAppenderRef("Stdout")));
-		LoggerContext ctx = Configurator.initialize(builder.build());
-		logger = ctx.getLogger(HelloWorldRestController.class.getName());
-		
-	}
  
 }
