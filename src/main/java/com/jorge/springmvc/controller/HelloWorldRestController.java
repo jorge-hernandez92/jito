@@ -88,23 +88,42 @@ public class HelloWorldRestController {
     }
     
     
-    //-------------------LOGIN----------------------------------------------------------------
+    /*
+     * Create a session for the user when it is login.  
+     */
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Usuario> login(HttpSession session, @RequestBody RegisterTomatoDTO user,    UriComponentsBuilder ucBuilder) {
-        //System.out.println("login  user " + user.toString());
-    	
+    public ResponseEntity<Usuario> login(HttpSession session, @RequestBody RegisterTomatoDTO user) {
         
         Usuario userLogin = userLService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
         
         if(userLogin != null){
-        	logger.debug("mensaje debug");
-        	logger.info("mensaje info");
-        	logger.error("Did it again!");
         	session.setAttribute("USER", userLogin);
+        	logger.info(session.getAttribute("USER").toString());
         	return new ResponseEntity<Usuario>(userLogin, HttpStatus.OK);
         }
         else{
+        	logger.error("El usuario no existe");
+        	return new ResponseEntity<Usuario>(HttpStatus.CONFLICT);
+        }
+        
+    }
+    
+    /*
+     * verify if exist a session
+     */
+    @RequestMapping(value = "/checkSession", method = RequestMethod.POST)
+    public ResponseEntity<Usuario> login(HttpSession session) {
+        
+    	Usuario userLogin = (Usuario) session.getAttribute("USER");
+    	
+        if(userLogin != null){
+        	session.setAttribute("USER", userLogin);
+        	logger.info(session.getAttribute("USER").toString());
+        	return new ResponseEntity<Usuario>(userLogin, HttpStatus.OK);
+        }
+        else{
+        	logger.error("El usuario no existe");
         	return new ResponseEntity<Usuario>(HttpStatus.CONFLICT);
         }
         
