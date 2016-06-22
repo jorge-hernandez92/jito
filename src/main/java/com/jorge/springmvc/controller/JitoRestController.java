@@ -20,19 +20,10 @@ import com.jorge.springmvc.service.RegisterTService;
 import com.jorge.springmvc.service.UserService;
 
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.Filter;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.appender.ConsoleAppender;
-import org.apache.logging.log4j.core.config.Configurator;
-import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder;
-import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilder;
-import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory;
-import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
  
 @RestController
-public class HelloWorldRestController {
+public class JitoRestController {
  
     @Autowired
     RegisterTService userService;  //Service which will do all data retrieval/manipulation work
@@ -41,7 +32,7 @@ public class HelloWorldRestController {
     UserService userLService; 
     
     //private static Logger logger;
-    private static final Logger logger = LogManager.getLogger(HelloWorldRestController.class);
+    private static final Logger logger = LogManager.getLogger(JitoRestController.class);
  
     
     //-------------------Retrieve All Users--------------------------------------------------------
@@ -60,38 +51,43 @@ public class HelloWorldRestController {
     //-------------------Create a User--------------------------------------------------------
      
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(HttpSession session, @RequestBody RegisterTomatoDTO user,    UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating User " + user.toString());
+    public ResponseEntity<Void> createUser(HttpSession session, @RequestBody RegisterTomatoDTO user, UriComponentsBuilder ucBuilder) {
         
         Usuario userLogin = (Usuario) session.getAttribute("USER"); 
         
         if(userLogin != null){
-        	
-        	System.out.println("El usuario con sesion actual es: "+userLogin.toString());
-        	
-        	if (userService.isUserExist(user)) {
-                System.out.println("A User with name " + user.toString() + " already exist");
-                return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-            }
      
-            userService.saveUser(user);
-     
-            HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-            return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+            userService.saveUser(user, userLogin.getIdUsuario());
+            return new ResponseEntity<Void>(HttpStatus.CREATED);
         }
         
         else{
-        	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        	return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
         }
         
     }
     
+    /*
+     * Add tomatoes production
+     */
+    @RequestMapping(value = "/addTomatoes", method = RequestMethod.POST)
+    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody RegisterTomatoDTO user,    UriComponentsBuilder ucBuilder) {        
+        Usuario userLogin = (Usuario) session.getAttribute("USER"); 
+        
+        if(userLogin != null){
+     
+            return new ResponseEntity<Void>(HttpStatus.CREATED);
+        }
+        
+        else{
+        	return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+        }
+        
+    }
     
     /*
      * Create a session for the user when it is login.  
      */
-    
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Usuario> login(HttpSession session, @RequestBody RegisterTomatoDTO user) {
         
@@ -104,7 +100,7 @@ public class HelloWorldRestController {
         }
         else{
         	logger.error("El usuario no existe");
-        	return new ResponseEntity<Usuario>(HttpStatus.CONFLICT);
+        	return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
         }
         
     }
@@ -124,9 +120,8 @@ public class HelloWorldRestController {
         }
         else{
         	logger.error("El usuario no existe");
-        	return new ResponseEntity<Usuario>(HttpStatus.CONFLICT);
+        	return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
         }
-        
     }
  
 }
