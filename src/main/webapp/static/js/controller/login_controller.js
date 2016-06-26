@@ -19,6 +19,8 @@ App.controller('LoginController', ['$scope', 'UserService', function($scope, Use
           }
  
           self.submit = function() {
+        	  
+        	  console.info(self.user);
         	  self.login(self.user)
           };
  

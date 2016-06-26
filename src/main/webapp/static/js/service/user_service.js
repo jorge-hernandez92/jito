@@ -7,7 +7,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
         	
     		//loggin 
     		login: function(user) {
-    				return $http.post('http://localhost:8081/JProJS/login/', user)
+    				return $http.post('http://localhost:8080/JProJS/login/', user)
     						.then(
     								function(response){
                                         return response.data;
@@ -21,7 +21,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
     		
     		
     		checkSession : function() {
-    				return $http.post('http://localhost:8081/JProJS/checkSession/')
+    				return $http.post('http://localhost:8080/JProJS/checkSession/')
     						.then(
     								function(response){
                                         return response.data;
@@ -34,8 +34,8 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
     		}, 
  
     	
-            fetchAllUsers: function() {
-                    return $http.get('http://localhost:8081/JProJS/user/')
+            fetchAllProduction: function() {
+                    return $http.get('http://localhost:8080/JProJS/production/')
                             .then(
                                     function(response){
                                         return response.data;
@@ -47,8 +47,8 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
                             );
             },
              
-            createUser: function(user){
-                    return $http.post('http://localhost:8081/JProJS/user/', user)
+            addProduction: function(user){
+                    return $http.post('http://localhost:8080/JProJS/addTomatoes/', user)
                             .then(
                                     function(response){
                                         return response.data;

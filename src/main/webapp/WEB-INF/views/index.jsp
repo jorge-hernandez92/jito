@@ -21,7 +21,7 @@
       <form ng-submit="ctrl.submit()" class="form-signin" >
         <h2 class="form-signin-heading">Inicio de Sesión</h2>
         <label for="inputEmail" class="sr-only">Nombre de Usuario</label>
-        <input ng-model="ctrl.user.username" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+        <input ng-model="ctrl.user.login" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required autofocus>
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <input ng-model="ctrl.user.password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>

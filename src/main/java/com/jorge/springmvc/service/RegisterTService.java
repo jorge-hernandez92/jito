@@ -2,14 +2,14 @@ package com.jorge.springmvc.service;
 
 import java.util.List;
 
-import com.jorge.springmvc.dto.RegisterTomatoDTO;
+import com.jorge.springmvc.dto.ProductionDTO;
 
 
 
 public interface RegisterTService {
-	
-	void saveUser(RegisterTomatoDTO user, Integer idUser);
 
-	List<RegisterTomatoDTO> findAllUsers(); 
+	List<ProductionDTO> findAllProduction();
+	
+	void saveProduction(ProductionDTO production, Integer idUser);
 	
 }

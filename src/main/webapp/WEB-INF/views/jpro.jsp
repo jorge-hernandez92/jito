@@ -51,22 +51,32 @@
 
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="fecha">Fecha de Corte</label> 
-                              
-                              <div class="col-md-4">
-                             
-                              	
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            	
-                              
-                              </div>
+                              <label class="col-md-2 control-lable" for="fecha">Fecha de Corte</label>
+
+							<div class="col-md-4">
+								<input type="date" id="date" class="form-control input-sm"
+									ng-model="example.value" placeholder="Ingresa Fecha de Corte" />
+							</div>
 
 						</div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="cantidad">Precio por Kilo</label>
+                              <div class="col-md-4">
+                                  <input type="number" ng-model="ctrl.user.precio" id="precio" class="form-control input-sm" placeholder="Precio por Kilo"/>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="descripcion">Descripcion</label>
+                              <div class="col-md-4">
+                              			<textarea rows="4" cols="47"></textarea>
+                              </div>
+                          </div>
                       </div>
 
                       <div class="row">
@@ -97,7 +107,7 @@
                               <td><span ng-bind="u.cantidad"></span></td>
                               <td><span ng-bind="u.date | date:'MM/dd/yyyy'"></span></td>
                               <td>
-                              <button type="button" ng-click="" class="btn btn-success" disabled="disabled">Comprobar</button>
+                              <button type="button" ng-click="" class="btn btn-success" disabled="disabled">Editar</button>
                               </td>
                           </tr>
                       </tbody>
@@ -114,31 +124,16 @@
 
         
     </div>
-</div>
-
- 	
-
+</div>     
       
+      <script src="<c:url value='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js' />"></script>
       
-      <script src="<c:url value='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' />"></script>
-      <script src="<c:url value='/static/js/library/moment.js' />"></script>
-      <script src="<c:url value='/static/js/library/bootstrap-datetimepicker.js' />"></script>
-      
-      
-      <script src="<c:url value='/static/js/library/angular.js' />"></script>
       <script src="<c:url value='/static/js/library/angular-resource.js' />"></script> 
       
       
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
-              <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-            
-
-            </script>
       
       
   </body>

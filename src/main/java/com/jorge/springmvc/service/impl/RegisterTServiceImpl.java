@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jorge.springmvc.dao.ProduccionDAO;
 import com.jorge.springmvc.dao.UserDAO;
-import com.jorge.springmvc.dto.RegisterTomatoDTO;
+import com.jorge.springmvc.dto.ProductionDTO;
 import com.jorge.springmvc.model.Produccion;
 import com.jorge.springmvc.model.TipoDeCultivo;
 import com.jorge.springmvc.model.Usuario;
@@ -26,13 +26,13 @@ public class RegisterTServiceImpl implements RegisterTService{
 	@Autowired
 	UserDAO usuarioDAO;
 	
-	public List<RegisterTomatoDTO> findAllUsers() {
+	public List<ProductionDTO> findAllProduction() {
 		
 		List<Produccion> listProduc = productionDAO.getAllProduccion();
-		List<RegisterTomatoDTO> listRP = new ArrayList<RegisterTomatoDTO>();
+		List<ProductionDTO> listRP = new ArrayList<ProductionDTO>();
 		
 		for (Produccion produccion : listProduc) {
-			RegisterTomatoDTO rp = new RegisterTomatoDTO();
+			ProductionDTO rp = new ProductionDTO();
 			rp.setCantidad(produccion.getCantidad());
 			rp.setDate(produccion.getFechaCorte());
 			rp.setUsername(produccion.getUsuario().getNombre());
@@ -42,25 +42,21 @@ public class RegisterTServiceImpl implements RegisterTService{
 		return listRP;
 	}
 	
-	
-	public void saveUser(RegisterTomatoDTO user, Integer idUser) {
+	public void saveProduction(ProductionDTO production, Integer idUser){
+		Produccion produccion = new Produccion();
+		produccion.setCantidad(production.getCantidad());
+		produccion.setFechaRegistro(new Date());
+		produccion.setFechaCorte(production.getDate());
 		
-			Produccion produccion = new Produccion();
-			produccion.setCantidad(user.getCantidad());
-			produccion.setFechaRegistro(new Date());
-			produccion.setFechaCorte(user.getDate());
-			
-			TipoDeCultivo tdc = new TipoDeCultivo();
-			tdc.setIdTipoDeCultivo(1);
-			
-			Usuario u = new Usuario();
-			u.setIdUsuario(idUser);
-			
-			produccion.setTipoDeCultivo(tdc);
-			produccion.setUsuario(u);
-			
-			productionDAO.save(produccion);
-	
+		TipoDeCultivo tdc = new TipoDeCultivo();
+		tdc.setIdTipoDeCultivo(1);
+		
+		Usuario u = new Usuario();
+		u.setIdUsuario(idUser);
+		
+		produccion.setTipoDeCultivo(tdc);
+		produccion.setUsuario(u);
+		productionDAO.save(produccion);
 	}
 
 
