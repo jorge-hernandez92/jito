@@ -42,11 +42,11 @@ public class RegisterTServiceImpl implements RegisterTService{
 		return listRP;
 	}
 	
-	public void saveProduction(ProductionDTO production, Integer idUser){
-		Produccion produccion = new Produccion();
-		produccion.setCantidad(production.getCantidad());
+	public void saveProduction(Produccion produccion, Integer idUser){
+//		Produccion produccion = new Produccion();
+//		produccion.setCantidad(production.getCantidad());
 		produccion.setFechaRegistro(new Date());
-		produccion.setFechaCorte(production.getDate());
+//		produccion.setFechaCorte(production.getDate());
 		
 		TipoDeCultivo tdc = new TipoDeCultivo();
 		tdc.setIdTipoDeCultivo(1);

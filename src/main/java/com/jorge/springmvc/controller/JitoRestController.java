@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.jorge.springmvc.dto.ProductionDTO;
-import com.jorge.springmvc.dto.RegisterTomatoDTO;
+import com.jorge.springmvc.model.Produccion;
 import com.jorge.springmvc.model.Usuario;
 import com.jorge.springmvc.service.RegisterTService;
 import com.jorge.springmvc.service.UserService;
@@ -50,7 +50,7 @@ public class JitoRestController {
      * Add tomatoes production
      */
     @RequestMapping(value = "/addTomatoes", method = RequestMethod.POST)
-    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody ProductionDTO production,    UriComponentsBuilder ucBuilder) {        
+    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody Produccion production,    UriComponentsBuilder ucBuilder) {        
         Usuario userLogin = (Usuario) session.getAttribute("USER"); 
         
         if(userLogin != null){

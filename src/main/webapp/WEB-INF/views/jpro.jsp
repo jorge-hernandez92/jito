@@ -42,20 +42,20 @@
                       
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="cantidad">Cantidad en Kg</label>
+                              <label class="col-md-2 control-lable" for="cantidad">*Cantidad en Kg</label>
                               <div class="col-md-4">
-                                  <input type="number" ng-model="ctrl.user.cantidad" id="cantidad" class="form-control input-sm" placeholder="Cantidad en Kg"/>
+                                  <input type="number" ng-model="ctrl.user.cantidad" id="cantidad" class="form-control input-sm" placeholder="Cantidad en Kg" required/>
                               </div>
                           </div>
                       </div>
 
                       <div class="row">
                           <div class="form-group col-md-12">
-                              <label class="col-md-2 control-lable" for="fecha">Fecha de Corte</label>
+                              <label class="col-md-2 control-lable" for="fecha">*Fecha de Corte</label>
 
 							<div class="col-md-4">
 								<input type="date" id="date" class="form-control input-sm"
-									ng-model="example.value" placeholder="Ingresa Fecha de Corte" />
+									ng-model="example.value" placeholder="Ingresa Fecha de Corte" required/>
 							</div>
 
 						</div>
@@ -74,7 +74,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="descripcion">Descripcion</label>
                               <div class="col-md-4">
-                              			<textarea rows="4" cols="47"></textarea>
+                              			<textarea rows="4" ng-model="ctrl.user.descricion" cols="47"></textarea>
                               </div>
                           </div>
                       </div>

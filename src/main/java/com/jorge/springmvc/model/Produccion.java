@@ -30,6 +30,8 @@ public class Produccion  implements java.io.Serializable {
      private Integer cantidad;
      private Date fechaCorte;
      private Date fechaRegistro;
+     private Integer precio;
+     private String descricion;
    
      @Id 
 
@@ -92,6 +94,24 @@ public class Produccion  implements java.io.Serializable {
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
+    
+    @Column(name="precio")
+	public Integer getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Integer precio) {
+		this.precio = precio;
+	}
+
+	@Column(name="descripcion")
+	public String getDescricion() {
+		return descricion;
+	}
+
+	public void setDescricion(String descricion) {
+		this.descricion = descricion;
+	}
 
 	@Override
 	public String toString() {

@@ -48,7 +48,7 @@ App.controller('UserController', ['$scope', 'UserService', function($scope, User
  
           self.submit = function() {
         	  
-        	  self.user.date = $scope.example.value;
+        	  self.user.fechaCorte = $scope.example.value;
         	  console.log('Saving New User', self.user);
         	  self.addProduction(self.user);
         	  console.log($scope.example.value);
