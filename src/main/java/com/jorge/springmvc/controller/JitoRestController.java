@@ -16,55 +16,53 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.jorge.springmvc.dto.ProductionDTO;
-import com.jorge.springmvc.model.Produccion;
 import com.jorge.springmvc.model.Usuario;
-import com.jorge.springmvc.service.RegisterTService;
 import com.jorge.springmvc.service.UserService;
  
 @RestController
 public class JitoRestController {
  
-    @Autowired
-    RegisterTService userService;  //Service which will do all data retrieval/manipulation work
-    
+//    @Autowired
+//    RegisterTService userService; 
+//    
     @Autowired
     UserService userLService; 
     
-    //private static Logger logger;
+    
     private static final Logger logger = LogManager.getLogger(JitoRestController.class);
  
  
     
-    @RequestMapping(value = "/production", method = RequestMethod.GET)
-    public ResponseEntity<List<ProductionDTO>> listAllProduction() {
-        List<ProductionDTO> users = userService.findAllProduction();
-        if(users.isEmpty()){
-            return new ResponseEntity<List<ProductionDTO>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<ProductionDTO>>(users, HttpStatus.OK);
-    }
-    
-    
-    
-    /*
-     * Add tomatoes production
-     */
-    @RequestMapping(value = "/addTomatoes", method = RequestMethod.POST)
-    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody Produccion production,    UriComponentsBuilder ucBuilder) {        
-        Usuario userLogin = (Usuario) session.getAttribute("USER"); 
-        
-        if(userLogin != null){
-        	
-        	userService.saveProduction(production, userLogin.getIdUsuario());
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
-        }
-        
-        else{
-        	return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
-        }
-        
-    }
-    
+//    @RequestMapping(value = "/production", method = RequestMethod.GET)
+//    public ResponseEntity<List<ProductionDTO>> listAllProduction() {
+//        List<ProductionDTO> users = userService.findAllProduction();
+//        if(users.isEmpty()){
+//            return new ResponseEntity<List<ProductionDTO>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+//        }
+//        return new ResponseEntity<List<ProductionDTO>>(users, HttpStatus.OK);
+//    }
+//    
+//    
+//    
+//    /*
+//     * Add tomatoes production
+//     */
+//    @RequestMapping(value = "/addTomatoes", method = RequestMethod.POST)
+//    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody Produccion production,    UriComponentsBuilder ucBuilder) {        
+//        Usuario userLogin = (Usuario) session.getAttribute("USER"); 
+//        
+//        if(userLogin != null){
+//        	
+//        	userService.saveProduction(production, userLogin.getIdUsuario());
+//            return new ResponseEntity<Void>(HttpStatus.CREATED);
+//        }
+//        
+//        else{
+//        	return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+//        }
+//        
+//    }
+//    
     /*
      * Create a session for the user when it is login.  
      */
