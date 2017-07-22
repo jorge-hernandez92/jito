@@ -12,10 +12,11 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.jorge.springmvc")
-public class HelloWorldConfiguration extends WebMvcConfigurerAdapter{
+public class JitoConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
+		
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
