@@ -1,12 +1,10 @@
 package com.jorge.springmvc.model;
 // Generated 21/07/2017 05:30:53 PM by Hibernate Tools 5.2.3.Final
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,44 +17,22 @@ import javax.persistence.Table;
 public class Harvest implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private HarvestId id;
+	private Integer idHarvest;
 	private User user;
 	private Float weight;
 	private String harvestCutDate;
 	private String registrationDate;
 	private String totalPrice;
 	private String comments;
-
-	public Harvest() {
+	
+	@Id
+	@Column(name = "ID_HARVEST", unique = true, nullable = false)
+	public Integer getIdHarvest() {
+		return idHarvest;
 	}
 
-	public Harvest(HarvestId id, User user) {
-		this.id = id;
-		this.user = user;
-	}
-
-	public Harvest(HarvestId id, User user, Float weight, String harvestCutDate, String registrationDate,
-			String totalPrice, String comments) {
-		this.id = id;
-		this.user = user;
-		this.weight = weight;
-		this.harvestCutDate = harvestCutDate;
-		this.registrationDate = registrationDate;
-		this.totalPrice = totalPrice;
-		this.comments = comments;
-	}
-
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idHarvest", column = @Column(name = "ID_HARVEST", nullable = false)),
-			@AttributeOverride(name = "idUsuario", column = @Column(name = "ID_USUARIO", nullable = false)) })
-	public HarvestId getId() {
-		return this.id;
-	}
-
-	public void setId(HarvestId id) {
-		this.id = id;
+	public void setIdHarvest(Integer idHarvest) {
+		this.idHarvest = idHarvest;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

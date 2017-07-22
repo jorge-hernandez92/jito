@@ -1,17 +1,12 @@
 package com.jorge.springmvc.model;
 // Generated 21/07/2017 05:30:53 PM by Hibernate Tools 5.2.3.Final
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,7 +17,7 @@ import javax.persistence.Table;
 public class User implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private UserId id;
+	private Integer idUser;
 	private Role role;
 	private int perfil;
 	private String username;
@@ -30,49 +25,15 @@ public class User implements java.io.Serializable {
 	private String lastName;
 	private String password;
 	private String email;
-	private Set harvests = new HashSet(0);
-	private Set logs = new HashSet(0);
 
-	public User() {
+	@Id
+	@Column(name = "ID_USER", unique = true, nullable = false)
+	public Integer getIdUser() {
+		return idUser;
 	}
 
-	public User(UserId id, Role role, int perfil, String username, String name, String lastName, String password,
-			String email) {
-		this.id = id;
-		this.role = role;
-		this.perfil = perfil;
-		this.username = username;
-		this.name = name;
-		this.lastName = lastName;
-		this.password = password;
-		this.email = email;
-	}
-
-	public User(UserId id, Role role, int perfil, String username, String name, String lastName, String password,
-			String email, Set harvests, Set logs) {
-		this.id = id;
-		this.role = role;
-		this.perfil = perfil;
-		this.username = username;
-		this.name = name;
-		this.lastName = lastName;
-		this.password = password;
-		this.email = email;
-		this.harvests = harvests;
-		this.logs = logs;
-	}
-
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "idUsuario", column = @Column(name = "ID_USUARIO", nullable = false)),
-			@AttributeOverride(name = "idRole", column = @Column(name = "ID_ROLE", nullable = false)) })
-	public UserId getId() {
-		return this.id;
-	}
-
-	public void setId(UserId id) {
-		this.id = id;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -137,24 +98,6 @@ public class User implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set getHarvests() {
-		return this.harvests;
-	}
-
-	public void setHarvests(Set harvests) {
-		this.harvests = harvests;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	public Set getLogs() {
-		return this.logs;
-	}
-
-	public void setLogs(Set logs) {
-		this.logs = logs;
 	}
 
 }

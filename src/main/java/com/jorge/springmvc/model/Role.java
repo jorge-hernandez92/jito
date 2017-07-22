@@ -1,13 +1,9 @@
 package com.jorge.springmvc.model;
 // Generated 21/07/2017 05:30:53 PM by Hibernate Tools 5.2.3.Final
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,25 +17,8 @@ public class Role implements java.io.Serializable {
 	private int idRole;
 	private String role;
 	private String description;
-	private Set users = new HashSet(0);
-
-	public Role() {
-	}
-
-	public Role(int idRole, String role) {
-		this.idRole = idRole;
-		this.role = role;
-	}
-
-	public Role(int idRole, String role, String description, Set users) {
-		this.idRole = idRole;
-		this.role = role;
-		this.description = description;
-		this.users = users;
-	}
 
 	@Id
-
 	@Column(name = "ID_ROLE", unique = true, nullable = false)
 	public int getIdRole() {
 		return this.idRole;
@@ -65,15 +44,6 @@ public class Role implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
-	public Set getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(Set users) {
-		this.users = users;
 	}
 
 }

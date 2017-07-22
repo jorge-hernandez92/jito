@@ -1,13 +1,8 @@
 'use strict';
-
-
-App.factory('UserService', ['$http', '$q', function($http, $q){
-	 
-    return {
-        	
-    		//loggin 
+App.factory('UserService', ['$http', '$q', function($http, $q){	 
+    return { 
     		login: function(user) {
-    				return $http.post('http://localhost:8080/JProJS/login/', user)
+    				return $http.post('http://localhost:8080/jito/login/', user)
     						.then(
     								function(response){
                                         return response.data;
@@ -17,11 +12,9 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
                                         return $q.reject(errResponse);
                                     }
     						);	
-    		},
-    		
-    		
+    		},    		
     		checkSession : function() {
-    				return $http.post('http://localhost:8080/JProJS/checkSession/')
+    				return $http.post('http://localhost:8080/jito/checkSession/')
     						.then(
     								function(response){
                                         return response.data;
@@ -31,11 +24,9 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
                                         return $q.reject(errResponse);
                                     }
     						);
-    		}, 
- 
-    	
+    		},     	
             fetchAllProduction: function() {
-                    return $http.get('http://localhost:8080/JProJS/production/')
+                    return $http.get('http://localhost:8080/jito/production/')
                             .then(
                                     function(response){
                                         return response.data;
@@ -46,9 +37,8 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
                                     }
                             );
             },
-             
             addProduction: function(user){
-                    return $http.post('http://localhost:8080/JProJS/addTomatoes/', user)
+                    return $http.post('http://localhost:8080/jito/addTomatoes/', user)
                             .then(
                                     function(response){
                                         return response.data;
@@ -59,7 +49,5 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
                                     }
                             );
             },
-         
     };
- 
 }]);
