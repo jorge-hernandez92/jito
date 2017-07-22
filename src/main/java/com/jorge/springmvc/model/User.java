@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "user", catalog = "jito_db")
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private UserId id;
 	private Role role;
 	private int perfil;

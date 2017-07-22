@@ -18,33 +18,45 @@ import javax.persistence.Table;
 @Table(name = "harvest", catalog = "jito_db")
 public class Harvest implements java.io.Serializable {
 
-	private Integer idHarvest;
+	private static final long serialVersionUID = 1L;
+	private HarvestId id;
 	private User user;
-	private String weight;
+	private Float weight;
 	private String harvestCutDate;
 	private String registrationDate;
 	private String totalPrice;
 	private String comments;
 
-//	@EmbeddedId
-//
-//	@AttributeOverrides({
-//			@AttributeOverride(name = "idHarvest", column = @Column(name = "ID_HARVEST", nullable = false)),
-//			@AttributeOverride(name = "idUsuario", column = @Column(name = "ID_USUARIO", nullable = false)) })
-//	public HarvestId getId() {
-//		return this.id;
-//	}
-//
-//	public void setId(HarvestId id) {
-//		this.id = id;
-//	}
-	
-	public Integer getIdHarvest() {
-		return idHarvest;
+	public Harvest() {
 	}
 
-	public void setIdHarvest(Integer idHarvest) {
-		this.idHarvest = idHarvest;
+	public Harvest(HarvestId id, User user) {
+		this.id = id;
+		this.user = user;
+	}
+
+	public Harvest(HarvestId id, User user, Float weight, String harvestCutDate, String registrationDate,
+			String totalPrice, String comments) {
+		this.id = id;
+		this.user = user;
+		this.weight = weight;
+		this.harvestCutDate = harvestCutDate;
+		this.registrationDate = registrationDate;
+		this.totalPrice = totalPrice;
+		this.comments = comments;
+	}
+
+	@EmbeddedId
+
+	@AttributeOverrides({
+			@AttributeOverride(name = "idHarvest", column = @Column(name = "ID_HARVEST", nullable = false)),
+			@AttributeOverride(name = "idUsuario", column = @Column(name = "ID_USUARIO", nullable = false)) })
+	public HarvestId getId() {
+		return this.id;
+	}
+
+	public void setId(HarvestId id) {
+		this.id = id;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -58,11 +70,11 @@ public class Harvest implements java.io.Serializable {
 	}
 
 	@Column(name = "WEIGHT", length = 45)
-	public String getWeight() {
+	public Float getWeight() {
 		return this.weight;
 	}
 
-	public void setWeight(String weight) {
+	public void setWeight(Float weight) {
 		this.weight = weight;
 	}
 

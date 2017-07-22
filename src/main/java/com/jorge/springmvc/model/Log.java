@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "log", catalog = "jito_db")
 public class Log implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private LogId id;
 	private User user;
 	private String description;

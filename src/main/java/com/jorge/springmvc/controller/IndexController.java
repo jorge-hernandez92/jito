@@ -4,14 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jorge.springmvc.model.Usuario;
+import com.jorge.springmvc.model.User;
 
 @Controller
 @RequestMapping("/")
@@ -22,7 +19,7 @@ public class IndexController {
 	  @RequestMapping(method = RequestMethod.GET)
 	    public String getIndexPage(HttpSession session) {
 		  
-	    	Usuario userLogin = (Usuario) session.getAttribute("USER");
+	    	User userLogin = (User) session.getAttribute("USER");
 	    	
 	        if(userLogin != null){
 	        	session.setAttribute("USER", userLogin);
@@ -37,7 +34,7 @@ public class IndexController {
 	  
 	  @RequestMapping(value="/home", method = RequestMethod.GET)
 	    public String getHome(HttpSession session) {		  
-	    	Usuario userLogin = (Usuario) session.getAttribute("USER");
+	    	User userLogin = (User) session.getAttribute("USER");
 	    	
 	        if(userLogin != null){
 	        	session.setAttribute("USER", userLogin);

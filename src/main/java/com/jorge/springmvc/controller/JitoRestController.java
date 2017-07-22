@@ -1,6 +1,4 @@
 package com.jorge.springmvc.controller;
- 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import com.jorge.springmvc.dto.ProductionDTO;
-import com.jorge.springmvc.model.Usuario;
+import com.jorge.springmvc.model.User;
 import com.jorge.springmvc.service.UserService;
  
 @RestController
@@ -26,8 +22,7 @@ public class JitoRestController {
 //    RegisterTService userService; 
 //    
     @Autowired
-    UserService userLService; 
-    
+    UserService userService; 
     
     private static final Logger logger = LogManager.getLogger(JitoRestController.class);
  
@@ -67,40 +62,34 @@ public class JitoRestController {
      * Create a session for the user when it is login.  
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Usuario> login(HttpSession session, @RequestBody Usuario user) {
-        
-        Usuario userLogin = userLService.getUserByNameAndPassword(user.getLogin(), user.getPassword());
-        
+    public ResponseEntity<User> login(HttpSession session, @RequestBody User user) {
+        User userLogin = userService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
         logger.info("Quiere iniciar sesion el usuario: "+user.toString());
-        
         if(userLogin != null){
         	session.setAttribute("USER", userLogin);
         	logger.info(session.getAttribute("USER").toString());
-        	return new ResponseEntity<Usuario>(userLogin, HttpStatus.OK);
+        	return new ResponseEntity<User>(userLogin, HttpStatus.OK);
         }
         else{
         	logger.error("El usuario no existe");
-        	return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
+        	return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
         }
-        
     }
     
     /*
      * verify if exist a session
      */
     @RequestMapping(value = "/checkSession", method = RequestMethod.POST)
-    public ResponseEntity<Usuario> login(HttpSession session) {
-        
-    	Usuario userLogin = (Usuario) session.getAttribute("USER");
-    	
+    public ResponseEntity<User> login(HttpSession session) {
+    	User userLogin = (User) session.getAttribute("USER");
         if(userLogin != null){
         	session.setAttribute("USER", userLogin);
         	logger.info(session.getAttribute("USER").toString());
-        	return new ResponseEntity<Usuario>(userLogin, HttpStatus.OK);
+        	return new ResponseEntity<User>(userLogin, HttpStatus.OK);
         }
         else{
         	logger.error("El usuario no existe");
-        	return new ResponseEntity<Usuario>(HttpStatus.UNAUTHORIZED);
+        	return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
         }
     }
  

@@ -1,9 +1,9 @@
 package com.jorge.springmvc.dao;
 
-import com.jorge.springmvc.model.Usuario;
+import com.jorge.springmvc.model.User;
 
 public interface UserDAO {
 	
-	Usuario getUserByLoginAndPassword(String login, String password);
+	User getUserByLoginAndPassword(String login, String password);
 
 }

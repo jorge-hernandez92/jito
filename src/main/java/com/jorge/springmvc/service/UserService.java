@@ -1,9 +1,9 @@
 package com.jorge.springmvc.service;
 
-import com.jorge.springmvc.model.Usuario;
+import com.jorge.springmvc.model.User;
 
 public interface UserService {
 	
-	public Usuario getUserByNameAndPassword(String user, String password);
+	public User getUserByNameAndPassword(String user, String password);
 
 }

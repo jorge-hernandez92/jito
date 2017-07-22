@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jorge.springmvc.dao.UserDAO;
-import com.jorge.springmvc.model.Usuario;
+import com.jorge.springmvc.model.User;
 import com.jorge.springmvc.service.UserService;
 
 @Service("userService")
@@ -16,9 +16,9 @@ public class UserServiceImp implements UserService {
 	UserDAO userDAO; 
 
 	@Override
-	public Usuario getUserByNameAndPassword(String userName, String password) {
+	public User getUserByNameAndPassword(String userName, String password) {
 		
-		Usuario user = userDAO.getUserByLoginAndPassword(userName, password);
+		User user = userDAO.getUserByLoginAndPassword(userName, password);
 		
 		if(user == null){
 			//LOG
