@@ -21,21 +21,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
-            <li><a href="">Registro de Cosecha</a></li>
-            <li><a href="">Tratamiento</a></li>
-            <li><a href="">Inversión</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="home" >Inicio</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="harvest" >Registro de Cosecha</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="treatment">Tratamiento</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="investment">Inversión</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a ng-click="ctrl.btnLogout()">Cerrar sessión</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </nav>
-      <script src="<c:url value='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js' />"></script>
-      <script src="<c:url value='/static/js/library/angular-resource.js' />"></script>
-      <script src="<c:url value='/static/js/app.js' />"></script>
-      <script src="<c:url value='/static/js/service/user_service.js' />"></script>
-      <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+    </nav>    
+	<div style="padding-left: 150px;padding-right: 150px;">
+		<ui-view></ui-view>	
+	</div>
+	<script src="<c:url value='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js' />"></script>
+	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="<c:url value='/static/js/library/angular-resource.js' />"></script>
+    <script src="<c:url value='/static/js/app.js' />"></script>
+    <script src="<c:url value='/static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
   </body>
 </html>

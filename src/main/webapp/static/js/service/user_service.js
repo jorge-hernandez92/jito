@@ -6,7 +6,7 @@ App.factory('UserService', [
 			return {
 				login : function(user) {
 					return $http
-							.post('http://localhost:8080/Jito/login/', user)
+							.post('login/', user)
 							.then(function(response) {
 								return response.data;
 							}, function(errResponse) {
@@ -26,7 +26,7 @@ App.factory('UserService', [
 				},
 				logout : function() {
 					return $http.get(
-							'http://localhost:8080/Jito/logout/').then(
+							'logout/').then(
 							function(response) {
 								return response.data;
 							}, function(errResponse) {
