@@ -19,7 +19,6 @@ public class User implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idUser;
 	private Role role;
-	private int perfil;
 	private String username;
 	private String name;
 	private String lastName;
@@ -36,7 +35,7 @@ public class User implements java.io.Serializable {
 		this.idUser = idUser;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_ROLE", nullable = false, insertable = false, updatable = false)
 	public Role getRole() {
 		return this.role;
@@ -44,15 +43,6 @@ public class User implements java.io.Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	@Column(name = "PERFIL", nullable = false)
-	public int getPerfil() {
-		return this.perfil;
-	}
-
-	public void setPerfil(int perfil) {
-		this.perfil = perfil;
 	}
 
 	@Column(name = "USERNAME", nullable = false, length = 45)

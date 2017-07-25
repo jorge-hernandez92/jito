@@ -37,3 +37,4 @@
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+.settings/org.eclipse.wst.common.project.facet.core.xml

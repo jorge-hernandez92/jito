@@ -18,34 +18,29 @@ public class IndexController {
 
 	  @RequestMapping(method = RequestMethod.GET)
 	    public String getIndexPage(HttpSession session) {
-		  
 	    	User userLogin = (User) session.getAttribute("USER");
-	    	
 	        if(userLogin != null){
 	        	session.setAttribute("USER", userLogin);
 	        	logger.info(session.getAttribute("USER").toString());
-	        	return "jpro";
+	        	return "jito-spa";
 	        }
 	        else{
 	        	logger.error("El usuario no existe");
-	        	return "index";
+	        	return "login";
 	        }
 	    }
 	  
 	  @RequestMapping(value="/home", method = RequestMethod.GET)
 	    public String getHome(HttpSession session) {		  
 	    	User userLogin = (User) session.getAttribute("USER");
-	    	
 	        if(userLogin != null){
 	        	session.setAttribute("USER", userLogin);
 	        	logger.info(session.getAttribute("USER").toString());
-	        	return "jpro";
+	        	return "jito-spa";
 	        }
 	        else{
 	        	logger.error("El usuario no existe");
-	        	return "index";
+	        	return "login";
 	        } 
 	    }
-	  
-
 }

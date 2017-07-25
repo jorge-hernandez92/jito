@@ -13,27 +13,21 @@
     <link href="<c:url value='/static/css/signin.css' />" rel="stylesheet"></link>
 
   </head>	
-
   <body ng-app="myApp" class="ng-cloak">
-
     <div class="container" ng-controller="LoginController as ctrl">
-
-      <form ng-submit="ctrl.submit()" class="form-signin" >
+      <form ng-submit="ctrl.login()" class="form-signin" >
         <h2 class="form-signin-heading">Inicio de Sesión</h2>
         <label for="inputEmail" class="sr-only">Nombre de Usuario</label>
-        <input ng-model="ctrl.user.login" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required autofocus>
+        <input ng-model="ctrl.user.username" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required autofocus>
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <input ng-model="ctrl.user.password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
       </form>
-
     </div> <!-- /container -->
-    
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
-    
   </body>
 </html>

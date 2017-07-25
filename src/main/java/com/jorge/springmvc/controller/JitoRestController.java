@@ -17,10 +17,7 @@ import com.jorge.springmvc.service.UserService;
  
 @RestController
 public class JitoRestController {
- 
-//    @Autowired
-//    RegisterTService userService; 
-//    
+  
     @Autowired
     UserService userService; 
     
@@ -58,39 +55,5 @@ public class JitoRestController {
 //        
 //    }
 //    
-    /*
-     * Create a session for the user when it is login.  
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<User> login(HttpSession session, @RequestBody User user) {
-        User userLogin = userService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
-        logger.info("Quiere iniciar sesion el usuario: "+user.toString());
-        if(userLogin != null){
-        	session.setAttribute("USER", userLogin);
-        	logger.info(session.getAttribute("USER").toString());
-        	return new ResponseEntity<User>(userLogin, HttpStatus.OK);
-        }
-        else{
-        	logger.error("El usuario no existe");
-        	return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
-        }
-    }
-    
-    /*
-     * verify if exist a session
-     */
-    @RequestMapping(value = "/checkSession", method = RequestMethod.POST)
-    public ResponseEntity<User> login(HttpSession session) {
-    	User userLogin = (User) session.getAttribute("USER");
-        if(userLogin != null){
-        	session.setAttribute("USER", userLogin);
-        	logger.info(session.getAttribute("USER").toString());
-        	return new ResponseEntity<User>(userLogin, HttpStatus.OK);
-        }
-        else{
-        	logger.error("El usuario no existe");
-        	return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
-        }
-    }
- 
+
 }

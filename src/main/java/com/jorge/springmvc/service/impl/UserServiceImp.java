@@ -17,13 +17,7 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public User getUserByNameAndPassword(String userName, String password) {
-		
 		User user = userDAO.getUserByLoginAndPassword(userName, password);
-		
-		if(user == null){
-			//LOG
-		}
-		
 		return user;
 	}
 
