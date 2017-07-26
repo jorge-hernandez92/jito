@@ -2,8 +2,10 @@
 
 var App = angular.module('myApp', [ 'ui.router' ]);
 
-App.config(function($stateProvider) {
-	console.log(window.location);
+App.config(function($stateProvider, $urlRouterProvider) {
+	
+	$urlRouterProvider.otherwise('/inicio');
+	
 	var homeState = {
 		name : 'home',
 		url : '/inicio',
@@ -26,7 +28,7 @@ App.config(function($stateProvider) {
 			name : 'treatment',
 			url : '/tratamiento',
 			templateUrl : 'static/view/treatment.jsp'
-		}
+	}
 
 	$stateProvider.state(homeState);
 	$stateProvider.state(harvestState);
