@@ -6,6 +6,9 @@
      <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
      <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
      <link href="<c:url value='/static/css/bootstrap-datetimepicker.css' />" rel="stylesheet"></link>
+<!--      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css"> -->
+      <!-- AngularJS Material CSS now available via Google CDN; version 1.1.4 used here -->
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
   </head>
   <body ng-app="myApp" class="ng-cloak" ng-controller="UserController as ctrl" >  
   <nav class="navbar navbar-default navbar-static-top">
@@ -35,11 +38,21 @@
 	<div style="padding-left: 150px;padding-right: 150px;">
 		<ui-view></ui-view>	
 	</div>
-	<script src="<c:url value='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js' />"></script>
-	<script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="<c:url value='/static/js/library/angular-resource.js' />"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+     <!-- AngularJS Material Javascript now available via Google CDN; version 1.1.4 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+    
+    
+    <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/user_service.js' />"></script>
     <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+    
+    
   </body>
 </html>

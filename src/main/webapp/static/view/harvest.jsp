@@ -21,13 +21,7 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Fecha:</label>
 					<div class="col-md-6 ">
-						<div class='input-group date' id='dateHarvest'>
-							<input type='text' class="form-control" ng-model="selectedDt" data-date-time-picker /> 
-							<span
-								class="input-group-addon"> <span
-								class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
+						<md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
 					</div>
 				</div>
 				<div class="form-group">

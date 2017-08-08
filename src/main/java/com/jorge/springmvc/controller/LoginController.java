@@ -46,7 +46,7 @@ public class LoginController {
     
     /**
      * verify if exist a session
-     * @param session
+     * @param session petición 
      * @return status of request
      */
     @RequestMapping(value = "/checkSession", method = RequestMethod.POST)

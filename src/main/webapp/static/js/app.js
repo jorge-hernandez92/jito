@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('myApp', [ 'ui.router' ]);
+var App = angular.module('myApp', [ 'ui.router','ngMaterial', 'ngMessages']);
 
 App.config(function($stateProvider, $urlRouterProvider) {
 	

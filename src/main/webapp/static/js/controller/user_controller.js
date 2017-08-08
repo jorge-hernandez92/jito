@@ -1,13 +1,16 @@
 'use strict';
 
-App.controller('UserController', [
-		'$scope',
-		'UserService',
+App.controller('UserController', ['$scope','UserService',
+	
+	
 		function($scope, UserService) {
 			var self = this;
 			self.users = [];
 			self.date = new Date();
-
+			
+			this.myDate = new Date();
+			this.isOpen = false;
+			
 			$scope.example = {
 				value : new Date()
 			};
@@ -41,12 +44,6 @@ App.controller('UserController', [
 				$scope.myForm.$setPristine(); // reset Form
 			};
 			
-//			$("#dateHarvest").datetimepicker({
-//		        defaultDate: moment(),
-//		        locale: "es",
-//		        maxDate: "now",
-//		        format: "YYYY-MM-DD"
-//		    });
 			
 			var dateTimePicker = function() {
 	            return {
@@ -65,15 +62,6 @@ App.controller('UserController', [
 	                }
 	            };
 	        };
-			
-//			$(document).ready(function () {
-//				$("#dateHarvest").datetimepicker({
-//			        defaultDate: moment(),
-//			        locale: "es",
-//			        maxDate: "now",
-//			        format: "YYYY-MM-DD"
-//			    });
-//			};
 
 		} ]);
 

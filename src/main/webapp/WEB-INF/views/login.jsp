@@ -24,11 +24,20 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesión</button>
       </form>
     </div> <!-- /container -->
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
-      <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+     <!-- Angular Material Library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+      <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
+      
+      
+      
   </body>
 </html>
