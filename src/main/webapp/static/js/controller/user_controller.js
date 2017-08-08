@@ -41,27 +41,21 @@ App.controller('UserController', ['$scope','UserService',
 			
 			self.reset = function() {
 				self.user = {};
-				$scope.myForm.$setPristine(); // reset Form
+				$scope.myForm.$setPristine(); 
 			};
 			
 			
-			var dateTimePicker = function() {
-	            return {
-	                restrict: "A",
-	                require: "ngModel",
-	                link: function (scope, element, attrs, ngModelCtrl) {
-	                    var parent = $(element).parent();
-	                    var dtp = parent.datetimepicker({
-	                        format: "LL",
-	                        showTodayButton: true
-	                    });
-	                    dtp.on("dp.change", function (e) {
-	                        ngModelCtrl.$setViewValue(moment(e.date).format("LL"));
-	                        scope.$apply();
-	                    });
-	                }
-	            };
-	        };
+			$scope.save = function(harvest) {
+				console.log(harvest)
+			};
+
+			$scope.resetHarvest = function() {
+				$scope.harvest = {'precio':0, 'peso':0};
+			};
+			
+			$scope.resetHarvest();
+		      
+		      
 
 		} ]);
 
