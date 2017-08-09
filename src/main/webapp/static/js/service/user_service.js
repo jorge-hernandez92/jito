@@ -15,18 +15,16 @@ App.factory('UserService', [
 							});
 				},
 				checkSession : function() {
-					return $http.post(
-							'http://localhost:8080/Jito/checkSession/').then(
+					return $http.post('checkSession/').then(
 							function(response) {
 								return response.data;
-							}, function(errResponse) {
+							}, function(errResponse) {	
 								console.error('Does not exist user session');
 								return $q.reject(errResponse);
 							});
 				},
 				logout : function() {
-					return $http.get(
-							'logout/').then(
+					return $http.get('logout/').then(
 							function(response) {
 								return response.data;
 							}, function(errResponse) {
@@ -35,7 +33,7 @@ App.factory('UserService', [
 							});
 				},
 				fetchAllProduction : function() {
-					return $http.get('http://localhost:8080/Jito/production/')
+					return $http.get('production/')
 							.then(function(response) {
 								return response.data;
 							}, function(errResponse) {
@@ -43,9 +41,8 @@ App.factory('UserService', [
 								return $q.reject(errResponse);
 							});
 				},
-				addProduction : function(user) {
-					return $http.post(
-							'http://localhost:8080/jito/addTomatoes/', user)
+				addProduction : function(harvestDto) {
+					return $http.post('addProduction/', harvestDto)
 							.then(function(response) {
 								return response.data;
 							}, function(errResponse) {

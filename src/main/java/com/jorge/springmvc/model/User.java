@@ -90,4 +90,10 @@ public class User implements java.io.Serializable {
 		this.email = email;
 	}
 
+  @Override
+  public String toString() {
+    return "User [idUser=" + idUser + ", role=" + role + ", username=" + username + ", name=" + name
+        + ", lastName=" + lastName + ", password=" + password + ", email=" + email + "]";
+  }
+
 }

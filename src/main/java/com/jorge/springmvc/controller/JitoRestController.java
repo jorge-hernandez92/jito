@@ -1,5 +1,10 @@
 package com.jorge.springmvc.controller;
 
+import com.jorge.springmvc.dto.HarvestDto;
+import com.jorge.springmvc.model.User;
+import com.jorge.springmvc.service.HarvestService;
+import com.jorge.springmvc.service.UserService;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,48 +17,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jorge.springmvc.model.User;
-import com.jorge.springmvc.service.UserService;
- 
+
+
 @RestController
 public class JitoRestController {
-  
-    @Autowired
-    UserService userService; 
-    
-    private static final Logger logger = LogManager.getLogger(JitoRestController.class);
- 
- 
-    
-//    @RequestMapping(value = "/production", method = RequestMethod.GET)
-//    public ResponseEntity<List<ProductionDTO>> listAllProduction() {
-//        List<ProductionDTO> users = userService.findAllProduction();
-//        if(users.isEmpty()){
-//            return new ResponseEntity<List<ProductionDTO>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-//        }
-//        return new ResponseEntity<List<ProductionDTO>>(users, HttpStatus.OK);
-//    }
-//    
-//    
-//    
-//    /*
-//     * Add tomatoes production
-//     */
-//    @RequestMapping(value = "/addTomatoes", method = RequestMethod.POST)
-//    public ResponseEntity<Void> AddTomatoesPro(HttpSession session, @RequestBody Produccion production,    UriComponentsBuilder ucBuilder) {        
-//        Usuario userLogin = (Usuario) session.getAttribute("USER"); 
-//        
-//        if(userLogin != null){
-//        	
-//        	userService.saveProduction(production, userLogin.getIdUsuario());
-//            return new ResponseEntity<Void>(HttpStatus.CREATED);
-//        }
-//        
-//        else{
-//        	return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
-//        }
-//        
-//    }
-//    
+
+  @Autowired
+  UserService userService;
+
+  @Autowired
+  HarvestService harvestService;
+
+  private static final Logger logger = LogManager.getLogger(JitoRestController.class);
+
+  /**
+   * 
+   * @param session
+   * @param harvestDto
+   * @return
+   */
+  @RequestMapping(value = "/addProduction", method = RequestMethod.POST)
+  public ResponseEntity<Void> addProduction(HttpSession session,
+      @RequestBody HarvestDto harvestDto) {
+    logger.error(harvestDto.toString());
+    User userLogin = (User) session.getAttribute("USER");
+    if (userLogin != null) {
+      logger.error(userLogin.toString());
+      return new ResponseEntity<Void>(HttpStatus.CREATED);
+    } else {
+      return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+    }
+  }
+
 
 }

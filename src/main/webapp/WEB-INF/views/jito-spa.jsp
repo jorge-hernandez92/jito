@@ -4,9 +4,6 @@
   <head>  
     <title>JPro</title>  
      <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-     <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-     <link href="<c:url value='/static/css/bootstrap-datetimepicker.css' />" rel="stylesheet"></link>
-<!--      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css"> -->
       <!-- AngularJS Material CSS now available via Google CDN; version 1.1.4 used here -->
    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
   </head>
@@ -25,12 +22,14 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li ui-sref-active="active"><a href="" ui-sref="home" >Inicio</a></li>
-            <li ui-sref-active="active"><a href="" ui-sref="harvest" >Registro de Cosecha</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="harvest" >Cosecha</a></li>
             <li ui-sref-active="active"><a href="" ui-sref="treatment">Tratamiento</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="diseases">Enfermedades</a></li>
             <li ui-sref-active="active"><a href="" ui-sref="investment">Inversión</a></li>
+            <li ui-sref-active="active"><a href="" ui-sref="plant">Planta</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-click="ctrl.btnLogout()">Cerrar sessión</a></li>
+            <li><a href="" ng-click="ctrl.btnLogout()">Cerrar sessión</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

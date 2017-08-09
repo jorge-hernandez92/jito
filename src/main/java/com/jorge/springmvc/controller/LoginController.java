@@ -71,7 +71,7 @@ public class LoginController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResponseEntity<User> logout(HttpSession session) {
     	User userLogin = (User) session.getAttribute("USER");
-    	logger.info("cerrando sesión");
+    	logger.error("cerrando sesión");
         if(userLogin != null){
         	session.invalidate();
         	return new ResponseEntity<User>(HttpStatus.OK);

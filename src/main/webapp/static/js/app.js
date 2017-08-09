@@ -29,11 +29,25 @@ App.config(function($stateProvider, $urlRouterProvider) {
 			url : '/tratamiento',
 			templateUrl : 'static/view/treatment.jsp'
 	}
+	
+	var diseasesState = {
+			name : 'diseases',
+			url : '/enfermedades',
+			templateUrl : 'static/view/diseases.jsp'
+	}
+	
+	var plantState = {
+			name : 'plant',
+			url : '/planta',
+			templateUrl : 'static/view/plant.jsp'
+	}
 
 	$stateProvider.state(homeState);
 	$stateProvider.state(harvestState);
 	$stateProvider.state(investmentState);
 	$stateProvider.state(treatmentState);
+	$stateProvider.state(diseasesState);
+	$stateProvider.state(plantState);
 });
 
 App.config(function($mdDateLocaleProvider) {

@@ -24,7 +24,7 @@ public class Harvest implements java.io.Serializable {
 	private String registrationDate;
 	private String totalPrice;
 	private String comments;
-	
+
 	@Id
 	@Column(name = "ID_HARVEST", unique = true, nullable = false)
 	public Integer getIdHarvest() {
