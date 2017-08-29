@@ -4,24 +4,24 @@ import java.util.Date;
 
 public class HarvestDto {
   
-  private Integer weight;
-  private Integer price;
+  private Float weight;
+  private Float price;
   private String comments;
   private Date date;
   
-  public Integer getWeight() {
+  public Float getWeight() {
     return weight;
   }
 
-  public void setWeight(Integer weight) {
+  public void setWeight(Float weight) {
     this.weight = weight;
   }
 
-  public Integer getPrice() {
+  public Float getPrice() {
     return price;
   }
 
-  public void setPrice(Integer price) {
+  public void setPrice(Float price) {
     this.price = price;
   }
 

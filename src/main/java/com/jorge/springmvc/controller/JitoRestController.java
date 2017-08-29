@@ -1,9 +1,12 @@
 package com.jorge.springmvc.controller;
 
 import com.jorge.springmvc.dto.HarvestDto;
+import com.jorge.springmvc.model.Harvest;
 import com.jorge.springmvc.model.User;
 import com.jorge.springmvc.service.HarvestService;
 import com.jorge.springmvc.service.UserService;
+
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,10 +42,18 @@ public class JitoRestController {
   @RequestMapping(value = "/addProduction", method = RequestMethod.POST)
   public ResponseEntity<Void> addProduction(HttpSession session,
       @RequestBody HarvestDto harvestDto) {
-    logger.error(harvestDto.toString());
     User userLogin = (User) session.getAttribute("USER");
     if (userLogin != null) {
       logger.error(userLogin.toString());
+      logger.error(harvestDto.toString());
+      Harvest harvest = new Harvest(); 
+      harvest.setComments(harvestDto.getComments());
+      harvest.setHarvestCutDate(harvestDto.getDate());
+      harvest.setTotalPrice(harvestDto.getPrice());
+      harvest.setRegistrationDate(new Date());
+      harvest.setWeight(harvestDto.getWeight());
+      harvest.setUser(userLogin);
+      harvestService.insertHarvest(harvest);
       return new ResponseEntity<Void>(HttpStatus.CREATED);
     } else {
       return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);

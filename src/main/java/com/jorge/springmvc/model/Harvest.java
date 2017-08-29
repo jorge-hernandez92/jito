@@ -1,9 +1,13 @@
 package com.jorge.springmvc.model;
 // Generated 21/07/2017 05:30:53 PM by Hibernate Tools 5.2.3.Final
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,12 +24,13 @@ public class Harvest implements java.io.Serializable {
 	private Integer idHarvest;
 	private User user;
 	private Float weight;
-	private String harvestCutDate;
-	private String registrationDate;
-	private String totalPrice;
+	private Date harvestCutDate;
+	private Date registrationDate;
+	private Float totalPrice;
 	private String comments;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_HARVEST", unique = true, nullable = false)
 	public Integer getIdHarvest() {
 		return idHarvest;
@@ -36,7 +41,7 @@ public class Harvest implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_USUARIO", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "ID_USUARIO", nullable = false)
 	public User getUser() {
 		return this.user;
 	}
@@ -55,29 +60,29 @@ public class Harvest implements java.io.Serializable {
 	}
 
 	@Column(name = "HARVEST_CUT_DATE", length = 45)
-	public String getHarvestCutDate() {
+	public Date getHarvestCutDate() {
 		return this.harvestCutDate;
 	}
 
-	public void setHarvestCutDate(String harvestCutDate) {
+	public void setHarvestCutDate(Date harvestCutDate) {
 		this.harvestCutDate = harvestCutDate;
 	}
 
 	@Column(name = "REGISTRATION_DATE", length = 45)
-	public String getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return this.registrationDate;
 	}
 
-	public void setRegistrationDate(String registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
 	@Column(name = "TOTAL_PRICE", length = 45)
-	public String getTotalPrice() {
+	public Float getTotalPrice() {
 		return this.totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(Float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
