@@ -23,6 +23,7 @@ public class Harvest implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idHarvest;
 	private User user;
+	private Integer idUser; 
 	private Float weight;
 	private Date harvestCutDate;
 	private Date registrationDate;
@@ -40,10 +41,19 @@ public class Harvest implements java.io.Serializable {
 		this.idHarvest = idHarvest;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_USUARIO", nullable = false)
 	public User getUser() {
 		return this.user;
+	}
+
+	@Column(name = "ID_USUARIO", insertable=false, updatable=false)
+	public Integer getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 
 	public void setUser(User user) {
@@ -93,6 +103,15 @@ public class Harvest implements java.io.Serializable {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	@Override
+	public String toString() {
+		return "Harvest [idHarvest=" + idHarvest + ", user=" + user
+				+ ", idUser=" + idUser + ", weight=" + weight
+				+ ", harvestCutDate=" + harvestCutDate + ", registrationDate="
+				+ registrationDate + ", totalPrice=" + totalPrice
+				+ ", comments=" + comments + "]";
 	}
 
 }

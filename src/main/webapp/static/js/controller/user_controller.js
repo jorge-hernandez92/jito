@@ -43,14 +43,25 @@ App.controller('UserController', ['$scope','UserService',
 				},
 				function(errResponse) {
 					console.error('Error agregando producción.');
-					});
+				});
 			};
 
 			$scope.resetHarvest = function() {
 				$scope.harvest = {'price':null, 'weight':null,'date':new Date()};
 			};
 			
-			$scope.resetHarvest();     
+			$scope.resetHarvest();
+			
+			$scope.allProduction = function() {
+				UserService.allProduction().then(function(d) {
+					console.log(d);
+				}, 
+				function(errResponse) {
+					console.error('Error lista de producción');
+				});
+			};
+			
+			$scope.allProduction();
 
 		} ]);
 

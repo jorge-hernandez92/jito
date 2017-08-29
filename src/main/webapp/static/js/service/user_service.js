@@ -50,5 +50,14 @@ App.factory('UserService', [
 								return $q.reject(errResponse);
 							});
 				},
+				allProduction : function() {
+					return $http.get('allProduction/')
+							.then(function(response) {
+								return response.data;
+							}, function(errResponse) {
+								console.error('Error while fetching users');
+								return $q.reject(errResponse);
+							});
+				},
 			};
 		} ]);
