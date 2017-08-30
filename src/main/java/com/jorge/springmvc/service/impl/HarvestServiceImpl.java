@@ -43,4 +43,14 @@ public class HarvestServiceImpl implements HarvestService {
 		harvestUpdated.setWeight(harvest.getWeight());
 	}
 
+	@Override
+	public void deleteHarvest(Harvest harvest) {
+		harvestDao.deleteHarvest(harvest);
+	}
+
+	@Override
+	public Harvest findHarvestbyIdHarvest(Integer idHarvest) {
+		return harvestDao.findHarvestbyIdHarvest(idHarvest);
+	}
+
 }

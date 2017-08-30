@@ -89,19 +89,15 @@ public class JitoRestController {
 	}
 	
 	@RequestMapping(value = "/harvest/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<User> deleteUser(@PathVariable("id") int idHarvest) {
-		
+    public ResponseEntity<Harvest> deleteUser(@PathVariable("id") int idHarvest) {
 		logger.error("deleting harvest: "+idHarvest);
-		
-//        User user = userService.;
-//        if (user == null) {
-//            System.out.println("Unable to delete. User with id " + id + " not found");
-//            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-//        }
-//        userService.deleteUserById(id);
-        
-        
-        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		Harvest harvest = harvestService.findHarvestbyIdHarvest(idHarvest);
+		if(harvest != null) {
+			harvestService.deleteHarvest(harvest);
+		} else {
+			return new ResponseEntity<Harvest>(HttpStatus.NOT_FOUND);
+		}
+        return new ResponseEntity<Harvest>(HttpStatus.NO_CONTENT);
     }
 
 }

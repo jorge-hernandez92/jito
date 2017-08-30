@@ -9,4 +9,5 @@ public interface HarvestDao {
   List<Harvest> findAllHarvestByIdUser(Integer idUser);
   void updateHarvest(Harvest harvest);
   Harvest findHarvestbyIdHarvest(Integer idHarvest);
+  void deleteHarvest(Harvest harvest);
 }

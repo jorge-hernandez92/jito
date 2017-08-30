@@ -42,4 +42,9 @@ public class HarvestDaoImpl extends AbstractDao<Integer, Harvest>
 		    crit.add(Restrictions.eq("idHarvest", idHarvest));
 		    return (Harvest) crit.uniqueResult();
 	}
+
+	@Override
+	public void deleteHarvest(Harvest harvest) {
+		delete(harvest);
+	}
 }

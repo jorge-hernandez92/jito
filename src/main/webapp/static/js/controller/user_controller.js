@@ -59,7 +59,6 @@ App.controller('UserController', ['$scope','UserService',
 					for(var i = 0; i < d.length; i++){
 						var date = moment(d[i].date).format('LL');
 						d[i].FormatingDate = date;
-						console.log(d[i]);
 					}
 					$scope.listHarvest = d;
 				}, 
@@ -79,9 +78,10 @@ App.controller('UserController', ['$scope','UserService',
 			};
 			
 			$scope.deleteHarvest = function(harvest) {
-				console.log("deleting harvest: ");
-				console.log(harvest);
-				UserService.deleteHarvest(harvest.idHarvest).then($scope.allProduction(),function(errResponse){
+				UserService.deleteHarvest(harvest.idHarvest).then(function(data){
+					$scope.allProduction();
+					$scope.resetHarvest();
+				},function(errResponse){
 					console.error('Error while deleting User');
 	            });
 			};

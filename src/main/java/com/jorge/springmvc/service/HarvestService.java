@@ -9,4 +9,6 @@ public interface HarvestService {
   void insertHarvest(Harvest harvest);
   List<Harvest> findAllHarvestByIdUser(Integer idUser);	
   void updateHarvest(Harvest harvest);
+  void deleteHarvest(Harvest harvest);
+  Harvest findHarvestbyIdHarvest(Integer idHarvest);
 }
