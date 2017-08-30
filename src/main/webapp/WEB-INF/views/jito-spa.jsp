@@ -4,6 +4,8 @@
   <head>  
     <title>JPro</title>  
      <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+     <link href="<c:url value='/static/css/font-awesome.min.css' />" rel="stylesheet"></link>
+     
       <!-- AngularJS Material CSS now available via Google CDN; version 1.1.4 used here -->
    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
   </head>
@@ -46,12 +48,14 @@
      <!-- AngularJS Material Javascript now available via Google CDN; version 1.1.4 used here -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
     
-    
     <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/user_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>    
     
+    <script src="<c:url value='/static/js/libraries/moment.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/es.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-moment.min.js' />"></script>    
     
   </body>
 </html>

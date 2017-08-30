@@ -7,6 +7,7 @@ import com.jorge.springmvc.model.Harvest;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +26,7 @@ public class HarvestDaoImpl extends AbstractDao<Integer, Harvest>
 	public List<Harvest> findAllHarvestByIdUser(Integer idUser) {
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("idUser", idUser));
+		criteria.addOrder(Order.desc("harvestCutDate"));
 		return (List<Harvest>) criteria.list();
 	}
 

@@ -54,7 +54,11 @@ App.controller('UserController', ['$scope','UserService',
 			
 			$scope.allProduction = function() {
 				UserService.allProduction().then(function(d) {
-					console.log(d);
+					for(var i = 0; i < d.length; i++){
+						var date = moment(d[i].harvestCutDate).format('LL');
+						d[i].harvestCutDate = date;
+					}
+					$scope.listHarvest = d;
 				}, 
 				function(errResponse) {
 					console.error('Error lista de producción');

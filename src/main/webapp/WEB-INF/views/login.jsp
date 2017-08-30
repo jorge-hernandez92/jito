@@ -37,7 +37,9 @@
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
       
-      
+      <script src="<c:url value='/static/js/libraries/moment.min.js' />"></script>
+      <script src="<c:url value='/static/js/libraries/es.js' />"></script>
+      <script src="<c:url value='/static/js/libraries/angular-moment.min.js' />"></script> 
       
   </body>
 </html>

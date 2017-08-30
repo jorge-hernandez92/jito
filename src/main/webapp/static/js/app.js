@@ -1,6 +1,10 @@
 'use strict';
 
-var App = angular.module('myApp', [ 'ui.router','ngMaterial', 'ngMessages']);
+var App = angular.module('myApp', [ 'ui.router','ngMaterial', 'ngMessages', 'angularMoment']);
+
+App.run(function(amMoment) {
+	amMoment.changeLocale('es');
+});
 
 App.config(function($stateProvider, $urlRouterProvider) {
 	
