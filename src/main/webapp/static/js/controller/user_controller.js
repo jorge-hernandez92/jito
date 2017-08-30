@@ -40,6 +40,8 @@ App.controller('UserController', ['$scope','UserService',
 				UserService.addProduction(harvest)
 				.then(function(data){
 					console.log(data);
+					$scope.allProduction();
+					$scope.resetHarvest();
 				},
 				function(errResponse) {
 					console.error('Error agregando producción.');
