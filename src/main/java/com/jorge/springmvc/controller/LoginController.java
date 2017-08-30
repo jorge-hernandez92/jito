@@ -32,7 +32,7 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<User> login(HttpSession session, @RequestBody User user) {
         User userLogin = userService.getUserByNameAndPassword(user.getUsername(), user.getPassword());
-        logger.info("Quiere iniciar sesion el usuario: "+user.toString());
+        //logger.info("Quiere iniciar sesion el usuario: "+user.toString());
         if(userLogin != null){
         	session.setAttribute("USER", userLogin);
         	logger.info(session.getAttribute("USER").toString());

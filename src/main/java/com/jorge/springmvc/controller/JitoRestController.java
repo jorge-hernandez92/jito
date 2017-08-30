@@ -1,5 +1,6 @@
 package com.jorge.springmvc.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,35 +47,61 @@ public class JitoRestController {
 			@RequestBody HarvestDto harvestDto) {
 		User userLogin = (User) session.getAttribute("USER");
 		if (userLogin != null) {
-			logger.error(userLogin.toString());
-			logger.error(harvestDto.toString());
 			Harvest harvest = new Harvest();
+			harvest.setIdHarvest(harvestDto.getIdHarvest());
 			harvest.setComments(harvestDto.getComments());
 			harvest.setHarvestCutDate(harvestDto.getDate());
 			harvest.setTotalPrice(harvestDto.getPrice());
 			harvest.setRegistrationDate(new Date());
 			harvest.setWeight(harvestDto.getWeight());
 			harvest.setUser(userLogin);
-			harvestService.insertHarvest(harvest);	
+			harvest.setIdHarvest(harvestDto.getIdHarvest());
+			if(harvest.getIdHarvest() == null) {
+				harvestService.insertHarvest(harvest);	
+			}else {
+				harvestService.updateHarvest(harvest);
+			}
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 	
-	
 	@RequestMapping(value = "/allProduction/", method = RequestMethod.GET)
-	public ResponseEntity<List<Harvest>> listAllHarvest(HttpSession session) {
-		logger.error("DDDD");
+	public ResponseEntity<List<HarvestDto>> listAllHarvest(HttpSession session) {
 		User userLogin = (User) session.getAttribute("USER");
-		List<Harvest> listHarvest = harvestService.findAllHarvestByIdUser(userLogin.getIdUser());
+		List<Harvest> listHarvest = harvestService
+				.findAllHarvestByIdUser(userLogin.getIdUser());
+		List<HarvestDto> listHarvestDto = new ArrayList<HarvestDto>();
 		for (Harvest harvest : listHarvest) {
-			logger.error(harvest.toString());
+			HarvestDto harvestDto = new HarvestDto();
+			harvestDto.setIdHarvest(harvest.getIdHarvest());
+			harvestDto.setComments(harvest.getComments());
+			harvestDto.setPrice(harvest.getTotalPrice());
+			harvestDto.setWeight(harvest.getWeight());
+			harvestDto.setDate(harvest.getHarvestCutDate());
+			listHarvestDto.add(harvestDto);
 		}
 		if (listHarvest.isEmpty()) {
-			return new ResponseEntity<List<Harvest>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<HarvestDto>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<Harvest>>(listHarvest, HttpStatus.OK);
+		return new ResponseEntity<List<HarvestDto>>(listHarvestDto, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/harvest/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<User> deleteUser(@PathVariable("id") int idHarvest) {
+		
+		logger.error("deleting harvest: "+idHarvest);
+		
+//        User user = userService.;
+//        if (user == null) {
+//            System.out.println("Unable to delete. User with id " + id + " not found");
+//            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+//        }
+//        userService.deleteUserById(id);
+        
+        
+        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+    }
 
 }

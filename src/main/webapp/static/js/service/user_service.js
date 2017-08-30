@@ -59,5 +59,14 @@ App.factory('UserService', [
 								return $q.reject(errResponse);
 							});
 				},
+				deleteHarvest : function(idHarvest) {
+			        return $http.delete('harvest/'+idHarvest)
+			            .then(function (response) {
+			            	return response.data;
+			            },function(errResponse){
+			                console.error('Error while deleting Harvest');
+			                return $q.reject(errResponse);
+			            });
+			    },
 			};
 		} ]);

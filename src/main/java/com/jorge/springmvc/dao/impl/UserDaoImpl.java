@@ -5,6 +5,7 @@ import com.jorge.springmvc.dao.UserDao;
 import com.jorge.springmvc.model.User;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,8 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     Criteria crit = createEntityCriteria();
     crit.add(Restrictions.eq("username", login));
     crit.add(Restrictions.eq("password", password));
-    return (User) crit.uniqueResult();
+    User user = (User)crit.uniqueResult();
+    return user;
   }
 
 }

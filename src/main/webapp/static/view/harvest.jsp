@@ -39,7 +39,7 @@
 				<div class="form-group row" style="text-align: center;">
 					<div class="col-sm-offset-3 col-sm-10">
 						<button type="submit" class="btn btn-outline-primary" ng-disabled="harvestForm.$invalid">Guardar</button>
-						<input type="button" class="btn btn-outline-secondary"" ng-click="resetHarvest()" value="Limpiar" />
+						<input type="button" class="btn btn-outline-secondary" ng-click="resetHarvest()" value="Limpiar" />
 					</div>
 				</div>				
 			</form>
@@ -57,14 +57,12 @@
 				</tr>
 				<tr ng-repeat="harvest in listHarvest">
 					<td>{{ harvest.weight | number }} kg</td>
-					<td>{{ harvest.totalPrice | currency}} Pesos</td>
-					<td>{{ harvest.totalPrice / harvest.weight | currency}} Pesos</td>
-					<td>{{ harvest.harvestCutDate}}</td>
+					<td>{{ harvest.price | currency}} Pesos</td>
+					<td>{{ harvest.price / harvest.weight | currency}} Pesos</td>
+					<td>{{ harvest.FormatingDate}}</td>
 					<td>
-<!-- 						<button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> -->
-<!-- 						<button type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button> -->
-						<button type="button" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-						<button type="button" class="btn btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-outline-success" ng-click="editHarvest(harvest)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-outline-danger"  ng-click="deleteHarvest(harvest)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 					</td>
 				</tr>
 			</table>

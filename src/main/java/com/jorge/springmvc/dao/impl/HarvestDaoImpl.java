@@ -3,6 +3,7 @@ package com.jorge.springmvc.dao.impl;
 import com.jorge.springmvc.dao.AbstractDao;
 import com.jorge.springmvc.dao.HarvestDao;
 import com.jorge.springmvc.model.Harvest;
+import com.jorge.springmvc.model.User;
 
 import java.util.List;
 
@@ -30,4 +31,15 @@ public class HarvestDaoImpl extends AbstractDao<Integer, Harvest>
 		return (List<Harvest>) criteria.list();
 	}
 
+	@Override
+	public void updateHarvest(Harvest harvest) {
+		updateHarvest(harvest);
+	}
+
+	@Override
+	public Harvest findHarvestbyIdHarvest(Integer idHarvest) {
+		 Criteria crit = createEntityCriteria();
+		    crit.add(Restrictions.eq("idHarvest", idHarvest));
+		    return (Harvest) crit.uniqueResult();
+	}
 }

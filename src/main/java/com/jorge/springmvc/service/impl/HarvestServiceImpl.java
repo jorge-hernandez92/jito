@@ -28,4 +28,19 @@ public class HarvestServiceImpl implements HarvestService {
 		return harvestDao.findAllHarvestByIdUser(idUser);
 	}
 
+	/*
+     * Since the method is running with Transaction, No need to call hibernate update explicitly.
+     * Just fetch the entity from db and update it with proper values within transaction.
+     * It will be updated in db once transaction ends. 
+     */
+	@Override
+	public void updateHarvest(Harvest harvest) {
+		Harvest harvestUpdated = harvestDao.findHarvestbyIdHarvest(harvest.getIdHarvest());
+		harvestUpdated.setComments(harvest.getComments());
+		harvestUpdated.setHarvestCutDate(harvest.getHarvestCutDate());
+		harvestUpdated.setTotalPrice(harvest.getTotalPrice());
+		harvestUpdated.setRegistrationDate(harvest.getRegistrationDate());
+		harvestUpdated.setWeight(harvest.getWeight());
+	}
+
 }
