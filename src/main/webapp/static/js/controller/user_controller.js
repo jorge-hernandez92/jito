@@ -1,33 +1,17 @@
 'use strict';
 
-App.controller('UserController', ['$scope','UserService',
+App.controller('UserController', ['$scope','UserService','HarvestService',
 	
-		function($scope, UserService) {
+		function($scope, UserService, HarvestService) {
 			var self = this;
 			self.users = [];
 
 			self.btnLogout = function() {
-				console.log("btnLogout");
 				UserService.logout().then(function(d) {
 					window.location.href = "home";
 				}, function(errResponse) {
 					console.error('Error al iniciar sesion');
 				});				
-			}
-
-			self.fetchAllProduction = function() {
-				UserService.fetchAllProduction().then(function(d) {
-					self.users = d;
-				}, function(errResponse) {
-					console.error('Error lista de producción');
-				});
-			};
-
-			self.addProduction = function(user) {
-				UserService.addProduction(user).then(self.fetchAllProduction,
-						function(errResponse) {
-							console.error('Error agregando producción.');
-						});
 			};
 			
 			self.reset = function() {
@@ -36,8 +20,7 @@ App.controller('UserController', ['$scope','UserService',
 			};
 			
 			$scope.save = function(harvest) {
-				console.log(harvest)
-				UserService.addProduction(harvest)
+				HarvestService.addProduction(harvest)
 				.then(function(data){
 					console.log(data);
 					$scope.allProduction();
@@ -55,7 +38,7 @@ App.controller('UserController', ['$scope','UserService',
 			$scope.resetHarvest();
 			
 			$scope.allProduction = function() {
-				UserService.allProduction().then(function(d) {
+				HarvestService.allProduction().then(function(d) {
 					for(var i = 0; i < d.length; i++){
 						var date = moment(d[i].date).format('LL');
 						d[i].FormatingDate = date;
@@ -68,7 +51,6 @@ App.controller('UserController', ['$scope','UserService',
 			};
 			
 			$scope.editHarvest = function(harvest) {
-				console.log(harvest);
 				$scope.harvest = {
 						'idHarvest':harvest.idHarvest,
 						'price':harvest.price, 
@@ -78,7 +60,7 @@ App.controller('UserController', ['$scope','UserService',
 			};
 			
 			$scope.deleteHarvest = function(harvest) {
-				UserService.deleteHarvest(harvest.idHarvest).then(function(data){
+				HarvestService.deleteHarvest(harvest.idHarvest).then(function(data){
 					$scope.allProduction();
 					$scope.resetHarvest();
 				},function(errResponse){

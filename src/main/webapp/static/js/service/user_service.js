@@ -32,41 +32,5 @@ App.factory('UserService', [
 								return $q.reject(errResponse);
 							});
 				},
-				fetchAllProduction : function() {
-					return $http.get('production/')
-							.then(function(response) {
-								return response.data;
-							}, function(errResponse) {
-								console.error('Error while fetching users');
-								return $q.reject(errResponse);
-							});
-				},
-				addProduction : function(harvestDto) {
-					return $http.post('addProduction/', harvestDto)
-							.then(function(response) {
-								return response.data;
-							}, function(errResponse) {
-								console.error('Error while creating user');
-								return $q.reject(errResponse);
-							});
-				},
-				allProduction : function() {
-					return $http.get('allProduction/')
-							.then(function(response) {
-								return response.data;
-							}, function(errResponse) {
-								console.error('Error while fetching users');
-								return $q.reject(errResponse);
-							});
-				},
-				deleteHarvest : function(idHarvest) {
-			        return $http.delete('harvest/'+idHarvest)
-			            .then(function (response) {
-			            	return response.data;
-			            },function(errResponse){
-			                console.error('Error while deleting Harvest');
-			                return $q.reject(errResponse);
-			            });
-			    },
 			};
 		} ]);

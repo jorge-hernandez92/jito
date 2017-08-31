@@ -52,6 +52,7 @@
     <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/service/harvest_service.js' />"></script>
     <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>    
     
     <script src="<c:url value='/static/js/libraries/moment.min.js' />"></script>
