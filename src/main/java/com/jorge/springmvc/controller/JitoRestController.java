@@ -56,9 +56,9 @@ public class JitoRestController {
 			harvest.setWeight(harvestDto.getWeight());
 			harvest.setUser(userLogin);
 			harvest.setIdHarvest(harvestDto.getIdHarvest());
-			if(harvest.getIdHarvest() == null) {
-				harvestService.insertHarvest(harvest);	
-			}else {
+			if (harvest.getIdHarvest() == null) {
+				harvestService.insertHarvest(harvest);
+			} else {
 				harvestService.updateHarvest(harvest);
 			}
 			return new ResponseEntity<Void>(HttpStatus.CREATED);
@@ -66,9 +66,10 @@ public class JitoRestController {
 			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
 		}
 	}
-	
+
 	@RequestMapping(value = "/allProduction/", method = RequestMethod.GET)
-	public ResponseEntity<List<HarvestDto>> listAllHarvest(HttpSession session) {
+	public ResponseEntity<List<HarvestDto>> listAllHarvest(
+			HttpSession session) {
 		User userLogin = (User) session.getAttribute("USER");
 		List<Harvest> listHarvest = harvestService
 				.findAllHarvestByIdUser(userLogin.getIdUser());
@@ -85,19 +86,21 @@ public class JitoRestController {
 		if (listHarvest.isEmpty()) {
 			return new ResponseEntity<List<HarvestDto>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<HarvestDto>>(listHarvestDto, HttpStatus.OK);
+		return new ResponseEntity<List<HarvestDto>>(listHarvestDto,
+				HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/harvest/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Harvest> deleteUser(@PathVariable("id") int idHarvest) {
-		logger.error("deleting harvest: "+idHarvest);
+	public ResponseEntity<Harvest> deleteUser(
+			@PathVariable("id") int idHarvest) {
+		logger.error("deleting harvest: " + idHarvest);
 		Harvest harvest = harvestService.findHarvestbyIdHarvest(idHarvest);
-		if(harvest != null) {
+		if (harvest != null) {
 			harvestService.deleteHarvest(harvest);
 		} else {
 			return new ResponseEntity<Harvest>(HttpStatus.NOT_FOUND);
 		}
-        return new ResponseEntity<Harvest>(HttpStatus.NO_CONTENT);
-    }
+		return new ResponseEntity<Harvest>(HttpStatus.NO_CONTENT);
+	}
 
 }
