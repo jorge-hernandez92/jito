@@ -33,6 +33,11 @@
      <!-- Angular Material Library -->
       <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
       <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+      
+      
+      <script src="<c:url value='/static/js/libraries/angular-bootstrap-datetimepicker-directive.js' />"></script>
+      
+      
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>

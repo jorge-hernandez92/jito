@@ -69,7 +69,10 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 			};
 			
 			$scope.allProduction();
-
-		} ]);
+			
+			
+			
+		}]
+);
 
 

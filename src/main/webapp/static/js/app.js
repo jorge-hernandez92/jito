@@ -1,10 +1,20 @@
 'use strict';
 
-var App = angular.module('myApp', ['ui.router', 'ngMaterial', 'ngMessages', 'angularMoment']);
+var App = angular.module('myApp', ['ui.router', 'ngMaterial', 'ngMessages', 'angularMoment', 'datetimepicker']);
 
 App.run(function (amMoment) {
 	amMoment.changeLocale('es');
 });
+
+
+//App.config([
+//	'datetimepickerProvider',
+//	function (datetimepickerProvider) {
+//		datetimepickerProvider.setOptions({
+//			locale: 'en'
+//		});
+//	}
+//]);
 
 App.config(function ($stateProvider, $urlRouterProvider) {
 
