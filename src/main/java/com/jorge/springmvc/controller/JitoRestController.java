@@ -93,7 +93,7 @@ public class JitoRestController {
 	@RequestMapping(value = "/harvest/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Harvest> deleteUser(
 			@PathVariable("id") int idHarvest) {
-		logger.error("deleting harvest: " + idHarvest);
+		logger.info("deleting harvest: " + idHarvest);
 		Harvest harvest = harvestService.findHarvestbyIdHarvest(idHarvest);
 		if (harvest != null) {
 			harvestService.deleteHarvest(harvest);

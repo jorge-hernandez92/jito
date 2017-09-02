@@ -35,13 +35,12 @@ public class LoginController {
             @RequestBody User user) {
         User userLogin = userService.getUserByNameAndPassword(
                 user.getUsername(), user.getPassword());
-        //logger.info("Quiere iniciar sesion el usuario: "+user.toString());
         if (userLogin != null) {
             session.setAttribute("USER", userLogin);
             logger.info(session.getAttribute("USER").toString());
             return new ResponseEntity<User>(userLogin, HttpStatus.OK);
         } else {
-            logger.error("El usuario no existe");
+            logger.info("El usuario no existe");
             return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
         }
     }
@@ -72,7 +71,7 @@ public class LoginController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ResponseEntity<User> logout(HttpSession session) {
         User userLogin = (User) session.getAttribute("USER");
-        logger.error("cerrando sesiÃ³n");
+        logger.info("cerrando sesión");
         if (userLogin != null) {
             session.invalidate();
             return new ResponseEntity<User>(HttpStatus.OK);
