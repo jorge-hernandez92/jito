@@ -1,4 +1,3 @@
-
 body {
 	background: #eee !important;	
 }
@@ -9,10 +8,10 @@ body {
 }
 
 .form-signin {
-  max-width: 380px;
+  max-width: 500px;
   padding: 15px 35px 45px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #bfbfbfc9;
   border: 1px solid rgba(0,0,0,0.1);  
 
   .form-signin-heading,
@@ -48,3 +47,4 @@ body {
 	  border-top-right-radius: 0;
 	}
 }
+

@@ -1,6 +1,8 @@
 'use strict';
 
-App.controller('LoginController', [ '$scope', 'UserService',
+var AppL = angular.module('myAppL',[]);
+
+AppL.controller('LoginController', [ '$scope', 'LoginService',
 		function($scope, UserService) {
 			var self = this;
 			self.users = [];

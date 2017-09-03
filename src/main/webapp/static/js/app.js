@@ -2,6 +2,8 @@
 
 var App = angular.module('myApp', ['ui.router', 'ngMaterial', 'ngMessages', 'angularMoment', 'datetimepicker']);
 
+
+
 App.run(function (amMoment) {
 	amMoment.changeLocale('es');
 });
