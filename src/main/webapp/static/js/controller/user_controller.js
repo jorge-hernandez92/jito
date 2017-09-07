@@ -20,6 +20,8 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 			};
 			
 			$scope.save = function(harvest) {
+				harvest.onlyDate = moment(harvest.date).format('YYYY-MM-DD');
+				console.log(harvest);
 				HarvestService.addProduction(harvest)
 				.then(function(data){
 					console.log(data);
@@ -41,7 +43,7 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 				HarvestService.allProduction().then(function(d) {
 					for(var i = 0; i < d.length; i++){
 						var date = moment(d[i].date).format('LL');
-						d[i].FormatingDate = date;
+						d[i].formatDate = date;
 					}
 					$scope.listHarvest = d;
 				}, 

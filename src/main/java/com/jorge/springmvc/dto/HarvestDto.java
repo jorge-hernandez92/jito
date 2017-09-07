@@ -9,6 +9,7 @@ public class HarvestDto {
 	private Float price;
 	private String comments;
 	private Date date;
+	private Date onlyDate;
 	
 	public Integer getIdHarvest() {
 		return idHarvest;
@@ -50,11 +51,18 @@ public class HarvestDto {
 		this.comments = comments;
 	}
 
+	public Date getOnlyDate() {
+		return onlyDate;
+	}
+
+	public void setOnlyDate(Date onlyDate) {
+		this.onlyDate = onlyDate;
+	}
+
 	@Override
 	public String toString() {
-		return "HarvestDto [idHarvest=" + idHarvest + ", weight=" + weight
-				+ ", price=" + price + ", comments=" + comments + ", date="
-				+ date + "]";
+		return "HarvestDto [idHarvest=" + idHarvest + ", weight=" + weight + ", price=" + price + ", comments="
+				+ comments + ", date=" + date + ", onlyDate=" + onlyDate + "]";
 	}
 
 }

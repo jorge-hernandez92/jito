@@ -1,5 +1,8 @@
 package com.jorge.springmvc.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,7 +59,25 @@ public class JitoRestController {
 			harvest.setWeight(harvestDto.getWeight());
 			harvest.setUser(userLogin);
 			harvest.setIdHarvest(harvestDto.getIdHarvest());
+			
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+			Date today = harvestDto.getDate();
+
+			try {
+				Date todayWithZeroTime = formatter.parse(formatter.format(today));
+				logger.info(todayWithZeroTime);
+				harvestDto.setDate(todayWithZeroTime);
+				harvest.setHarvestCutDate(harvestDto.getDate());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			//logger.info(harvestDto.getDate());
 			if (harvest.getIdHarvest() == null) {
+				logger.info(harvest.toString());
 				harvestService.insertHarvest(harvest);
 			} else {
 				harvestService.updateHarvest(harvest);
