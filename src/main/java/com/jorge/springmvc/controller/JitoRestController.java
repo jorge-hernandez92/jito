@@ -70,14 +70,9 @@ public class JitoRestController {
 				harvestDto.setDate(todayWithZeroTime);
 				harvest.setHarvestCutDate(harvestDto.getDate());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			//logger.info(harvestDto.getDate());
 			if (harvest.getIdHarvest() == null) {
-				logger.info(harvest.toString());
 				harvestService.insertHarvest(harvest);
 			} else {
 				harvestService.updateHarvest(harvest);

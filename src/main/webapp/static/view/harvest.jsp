@@ -59,7 +59,7 @@
 					<td>{{ harvest.weight | number }} kg</td>
 					<td>{{ harvest.price | currency}} Pesos</td>
 					<td>{{ harvest.price / harvest.weight | currency}} Pesos</td>
-					<td>{{ harvest.formatgDate}}</td>
+					<td>{{ harvest.formatDate}}</td>
 					<td>
 						<button type="button" class="btn btn-outline-success" ng-click="editHarvest(harvest)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 						<button type="button" class="btn btn-outline-danger"  ng-click="deleteHarvest(harvest)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

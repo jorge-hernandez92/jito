@@ -4,9 +4,9 @@ App.controller('HarvestController', ['$scope','HarvestService',
 	
 		function($scope,HarvestService) {
 			var self = this;
-			self.users = [];
+			$scope.users = [];
 			
-			self.reset = reset;
+			$scope.reset = reset;
 			$scope.save = save; 
 			$scope.resetHarvest = resetHarvest;
 			$scope.allProduction = allProduction; 
@@ -47,6 +47,7 @@ App.controller('HarvestController', ['$scope','HarvestService',
 						d[i].formatDate = date;
 					}
 					$scope.listHarvest = d;
+					console.log($scope.listHarvest);
 				}, 
 				function(errResponse) {
 					console.error('Error lista de producción');
@@ -54,12 +55,13 @@ App.controller('HarvestController', ['$scope','HarvestService',
 			};
 			
 			function editHarvest(harvest) {
+				console.log(harvest);
 				$scope.harvest = {
 						idHarvest:harvest.idHarvest,
 						price:harvest.price, 
 						weight:harvest.weight,
 						date:new Date(harvest.date)
-						};
+				};
 			};
 			
 			function deleteHarvest (harvest) {

@@ -47,6 +47,8 @@
 		<ui-view></ui-view>	
 	</div>
 	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
@@ -72,12 +74,16 @@
     <script src="<c:url value='/static/js/service/session_service.js' />"></script>
     <script src="<c:url value='/static/js/controller/session_controller.js' />"></script>
     <script src="<c:url value='/static/js/controller/harvest_controller.js' />"></script>  
+    <script src="<c:url value='/static/js/controller/chart_controller.js' />"></script>  
     <script src="<c:url value='/static/js/service/harvest_service.js' />"></script>
        
     
     
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script> 
+	
+	
+	
     
   </body>
 </html>
