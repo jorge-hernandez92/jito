@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp').factory('UserService', ['$http', '$q', function ($http, $q) {
+angular.module('myApp').factory('SessionService', ['$http', '$q', function ($http, $q) {
 
 	var factory = {
 		login: login,

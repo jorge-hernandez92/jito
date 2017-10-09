@@ -4,14 +4,14 @@
     <html lang="en">
 
     <head>
-      <title>Inicio de sesiï¿½n</title>
+      <title>Inicio de sesión</title>
       <!-- Bootstrap core CSS -->
       <link href="<c:url value='/static/css/bootstrap.min.css' />" rel="stylesheet"></link>
       <!-- Custom styles for this template -->
       <link href="<c:url value='/static/css/signin.css' />" rel="stylesheet"></link>
     </head>
 
-    <body ng-app="myAppL" class="ng-cloak">
+    <body ng-app="myAppLogin" class="ng-cloak">
       <div class="wrapper" ng-controller="LoginController as ctrl">
         <form ng-submit="ctrl.login()" class="form-signin">
           <h2 class="form-signin-heading" style="text-align: center;">J I T O </h2>
@@ -22,9 +22,9 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-3 col-form-label">Contraseï¿½a</label>
+            <label for="inputPassword3" class="col-sm-3 col-form-label">Contraseña</label>
             <div class="col-sm-9">
-              <input ng-model="ctrl.user.password" type="password" class="form-control" placeholder="Contraseï¿½a" required>
+              <input ng-model="ctrl.user.password" type="password" class="form-control" placeholder="Contraseña" required>
             </div>
           </div>
           <div class="form-group row">
@@ -36,8 +36,10 @@
       </div>
 
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
       <script src="<c:url value='/static/js/service/login_service.js' />"></script>
+      
 
     </body>
 

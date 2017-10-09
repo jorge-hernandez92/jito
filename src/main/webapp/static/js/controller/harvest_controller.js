@@ -1,25 +1,27 @@
 'use strict';
 
-App.controller('UserController', ['$scope','UserService','HarvestService',
+App.controller('HarvestController', ['$scope','HarvestService',
 	
-		function($scope, UserService, HarvestService) {
+		function($scope,HarvestService) {
 			var self = this;
 			self.users = [];
-
-			self.btnLogout = function() {
-				UserService.logout().then(function(d) {
-					window.location.href = "home";
-				}, function(errResponse) {
-					console.error('Error al iniciar sesion');
-				});				
-			};
 			
-			self.reset = function() {
+			self.reset = reset;
+			$scope.save = save; 
+			$scope.resetHarvest = resetHarvest;
+			$scope.allProduction = allProduction; 
+			$scope.editHarvest = editHarvest;
+			$scope.deleteHarvest = deleteHarvest; 
+			
+			allProduction();
+			resetHarvest();
+			
+			function reset() {
 				self.user = {};
 				$scope.myForm.$setPristine(); 
 			};
 			
-			$scope.save = function(harvest) {
+			function save(harvest) {
 				harvest.onlyDate = moment(harvest.date).format('YYYY-MM-DD');
 				console.log(harvest);
 				HarvestService.addProduction(harvest)
@@ -33,13 +35,12 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 				});
 			};
 
-			$scope.resetHarvest = function() {
+			function resetHarvest() {
 				$scope.harvest = {'idHarvest':null,'price':null, 'weight':null,'date':new Date()};
 			};
 			
-			$scope.resetHarvest();
 			
-			$scope.allProduction = function() {
+			function allProduction() {
 				HarvestService.allProduction().then(function(d) {
 					for(var i = 0; i < d.length; i++){
 						var date = moment(d[i].date).format('LL');
@@ -52,16 +53,16 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 				});
 			};
 			
-			$scope.editHarvest = function(harvest) {
+			function editHarvest(harvest) {
 				$scope.harvest = {
-						'idHarvest':harvest.idHarvest,
-						'price':harvest.price, 
-						'weight':harvest.weight,
-						'date':new Date(harvest.date)
+						idHarvest:harvest.idHarvest,
+						price:harvest.price, 
+						weight:harvest.weight,
+						date:new Date(harvest.date)
 						};
 			};
 			
-			$scope.deleteHarvest = function(harvest) {
+			function deleteHarvest (harvest) {
 				HarvestService.deleteHarvest(harvest.idHarvest).then(function(data){
 					$scope.allProduction();
 					$scope.resetHarvest();
@@ -69,10 +70,6 @@ App.controller('UserController', ['$scope','UserService','HarvestService',
 					console.error('Error while deleting User');
 	            });
 			};
-			
-			$scope.allProduction();
-			
-			
 			
 		}]
 );

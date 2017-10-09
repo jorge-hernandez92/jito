@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html ng-app="myApp">
   <head>  
     <title>Jito</title>  
     
@@ -11,8 +11,8 @@
    	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
    	
   </head>
-  <body ng-app="myApp" class="ng-cloak" ng-controller="UserController as ctrl" >
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+  <body  class="ng-cloak" >
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" ng-controller="SessionController as ctrlSession">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo03"
 			aria-controls="navbarTogglerDemo03" aria-expanded="false"
@@ -38,7 +38,7 @@
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<button type="button" class="btn btn-outline-secondary my-2 my-sm-0"
-					ng-click="ctrl.btnLogout()">Cerrar Sesión</button>
+					ng-click="ctrlSession.btnLogout()">Cerrar Sesión</button>
 			</form>
 		</div>
 	</nav>
@@ -69,9 +69,11 @@
     
     
     <script src="<c:url value='/static/js/app.js' />"></script>
-    <script src="<c:url value='/static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/service/session_service.js' />"></script>
+    <script src="<c:url value='/static/js/controller/session_controller.js' />"></script>
+    <script src="<c:url value='/static/js/controller/harvest_controller.js' />"></script>  
     <script src="<c:url value='/static/js/service/harvest_service.js' />"></script>
-    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>    
+       
     
     
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
