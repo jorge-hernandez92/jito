@@ -12,7 +12,7 @@
    	
   </head>
   <body  class="ng-cloak" >
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" ng-controller="SessionController as ctrlSession">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" ng-controller="SessionController as ctrlSession">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo03"
 			aria-controls="navbarTogglerDemo03" aria-expanded="false"
@@ -27,6 +27,8 @@
 					class="nav-link" href="" ui-sref="home">Inicio</a></li>
 				<li class="nav-item" ui-sref-active="active"><a
 					class="nav-link" href="" ui-sref="harvest">Cosecha</a></li>
+				<li class="nav-item" ui-sref-active="active"><a
+					class="nav-link" href="" ui-sref="harvest2">Cosecha V2</a></li>
 				<li class="nav-item" ui-sref-active="active"><a
 					class="nav-link" href="" ui-sref="treatment">Tratamiento</a></li>
 				<li class="nav-item" ui-sref-active="active"><a

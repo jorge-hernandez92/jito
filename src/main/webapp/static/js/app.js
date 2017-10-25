@@ -33,6 +33,12 @@ App.config(function ($stateProvider, $urlRouterProvider) {
 		url: '/cosecha',
 		templateUrl: 'static/view/harvest.jsp'
 	}
+	
+	var harvest2State = {
+			name: 'harvest2',
+			url: '/cosecha2',
+			templateUrl: 'static/view/harvest2.jsp'
+	}
 
 	var investmentState = {
 		name: 'investment',
@@ -60,6 +66,7 @@ App.config(function ($stateProvider, $urlRouterProvider) {
 
 	$stateProvider.state(homeState);
 	$stateProvider.state(harvestState);
+	$stateProvider.state(harvest2State);
 	$stateProvider.state(investmentState);
 	$stateProvider.state(treatmentState);
 	$stateProvider.state(diseasesState);
