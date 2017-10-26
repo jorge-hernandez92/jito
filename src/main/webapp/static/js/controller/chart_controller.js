@@ -8,7 +8,6 @@ App.controller('ChartController', ['$scope', 'HarvestService', function ($scope,
 	function loadChart(){
 		google.charts.load('current', { 'packages': ['line'], 'language': 'es'});
 		google.charts.setOnLoadCallback(cosecha);
-		
 	}
 
 	function cosecha(){

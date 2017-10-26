@@ -5,9 +5,7 @@
 
     <head>
       <title>Inicio de sesión</title>
-      <!-- Bootstrap core CSS -->
       <link href="<c:url value='/static/css/bootstrap.min.css' />" rel="stylesheet"></link>
-      <!-- Custom styles for this template -->
       <link href="<c:url value='/static/css/signin.css' />" rel="stylesheet"></link>
     </head>
 
@@ -35,7 +33,7 @@
         </form>
       </div>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="<c:url value='/static/js/libraries/angular.min.js' />"></script>
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/controller/login_controller.js' />"></script>
       <script src="<c:url value='/static/js/service/login_service.js' />"></script>

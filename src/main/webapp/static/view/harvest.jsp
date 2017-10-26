@@ -1,27 +1,32 @@
 <div style="padding-left: 50px; padding-right: 50px;" ng-controller="HarvestController as ctrl">
 	<div class="panel panel-default">
 		<div class="panel-body">		
-			<form class="form-horizontal" name="harvestForm" ng-submit="save(harvest)">
+			<form class="form-horizontal was-validated"" name="harvestForm" ng-submit="save(harvest)">
 			
-				<div class="form-group row " ng-class="{ 'has-error' : harvestForm.weight.$invalid && !harvestForm.weight.$pristine, 'has-success': harvestForm.weight.$valid}">
+				<div class="form-group row">
 					<label class="col-sm-3 control-label">Peso total (Kg):</label>
 					<div class="col-md-7">
-						<input type="number"  name="weight" ng-model="harvest.weight" class="form-control" placeholder="Peso total" required>
-							<p ng-show="harvestForm.weight.$invalid  && !harvestForm.weight.$pristine" class="help-block">El peso (kg) del corte es requerido</p>
+						<input type="number" step="any" name="weight" ng-model="harvest.weight" class="form-control" placeholder="Peso total" required>
+						<div class="invalid-feedback">Agrega el peso (Kg) del Producto. Solo Números</div>
+						<div class="valid-feedback">
+							<label  ng-show="harvest.weight != null" class="control-label">{{ harvest.weight | number}} Kg </label>
+						</div>
 					</div>
 				</div>
-				<div class="form-group row" ng-class="{ 'has-error' : harvestForm.price.$invalid && !harvestForm.price.$pristine, 'has-success': harvestForm.price.$valid}">
+				<div class="form-group row">
 					<label class="col-sm-3 control-label">Precio total ($):</label>
 					<div class="col-md-7">
-						<input type="number" name="price" ng-model="harvest.price" class="form-control" placeholder="Precio total" required>
-						<p ng-show="harvestForm.price.$invalid  && !harvestForm.price.$pristine" class="help-block">El precio ($) del corte es requerido</p>	
+						<input type="number" step="any" name="price" ng-model="harvest.price" class="form-control" placeholder="Precio total" required>
+						<div class="invalid-feedback">Agrega el precio del Producto. Solo Números</div>
+						<div class="valid-feedback">
+							<label  ng-show="harvest.weight != null" class="control-label">{{ harvest.price | currency}} Pesos</label>
+						</div>	
 					</div>
 				</div>
-				<div class="form-group row"  ng-class="{ 'has-error' : harvestForm.date.$invalid && !harvestForm.date.$pristine, 'has-success': harvestForm.date.$valid}">
+				<div class="form-group row">
 					<label class="col-sm-3 control-label" >Fecha de corte:</label>
 					<div class="col-md-7">
 						<md-datepicker name="date" ng-model="harvest.date" md-placeholder="Fecha de corte" required></md-datepicker>
-						<p ng-show="harvestForm.date.$invalid  && !harvestForm.date.$pristine" class="help-block">La fecha de corte es requerida</p>
 					</div>
 				</div>
 				<div class="form-group row">

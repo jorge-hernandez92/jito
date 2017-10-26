@@ -7,8 +7,12 @@
      <link href="<c:url value='/static/css/font-awesome.min.css' />" rel="stylesheet"></link>
      <link href="<c:url value='/static/css/bootstrap.min.css' />" rel="stylesheet"></link>
      
-      <!-- AngularJS Material CSS now available via Google CDN; version 1.1.4 used here -->
-   	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+   	<link href="<c:url value='/static/css/angular-material.css' />" rel="stylesheet"></link>
+   	
+   	
+   	
+   	<link href="<c:url value='/static/css/angular-datatables.min.css' />" rel="stylesheet"></link>
+   	<link href="<c:url value='/static/css/dataTables.bootstrap4.min.css' />" rel="stylesheet"></link>
    	
   </head>
   <body  class="ng-cloak" >
@@ -45,46 +49,45 @@
 		</div>
 	</nav>
 
-	<div style="padding-left: 150px;padding-right: 150px;padding-top: 5rem;">
+	<div style="padding-left: 150px;padding-right: 150px;padding-top: 5rem;background-color: white;">
 		<ui-view></ui-view>	
 	</div>
-	
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    
+    <script src="<c:url value='/static/js/libraries/loader.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-animate.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-aria.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-messages.min.js' />"></script>
+    
 
-     <!-- AngularJS Material Javascript now available via Google CDN; version 1.1.4 used here -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
-    
-    <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    
+
+    <script src="<c:url value='/static/js/libraries/angular-material.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-ui-router.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/jquery-3.2.1.slim.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/moment.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/es.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-moment.min.js' />"></script>  
-    
     <script src="<c:url value='/static/js/libraries/bootstrap-datetimepicker.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-bootstrap-datetimepicker-directive.js' />"></script>
     
+    
+    
+    
+    <script src="<c:url value='/static/js/libraries/jquery.dataTables.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-datatables.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/dataTables.bootstrap4.min.js' />"></script>
     
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/session_service.js' />"></script>
     <script src="<c:url value='/static/js/controller/session_controller.js' />"></script>
     <script src="<c:url value='/static/js/controller/harvest_controller.js' />"></script>  
+    <script src="<c:url value='/static/js/controller/harvest2_controller.js' />"></script>  
     <script src="<c:url value='/static/js/controller/chart_controller.js' />"></script>  
     <script src="<c:url value='/static/js/service/harvest_service.js' />"></script>
        
-    
-    
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script> 
-	
-	
+
+	<script src="<c:url value='/static/js/libraries/popper.min.js' />"></script>
+	<script src="<c:url value='/static/js/libraries/bootstrap.min.js' />"></script>
 	
     
   </body>
