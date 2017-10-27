@@ -8,8 +8,13 @@
 <!--     <br> -->
 
 
-    <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-striped"></table>
-			
+<!--     <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-striped"></table> -->
+
+			<div ng-if="showCase.displayTable">
+				<table datatable dt-options="showCase.dtOptions"
+					dt-columns="showCase.dtColumns" class="table table-striped"></table>
+			</div>
+
 		</div>
 	</div>
 </div>

@@ -11,7 +11,7 @@
    	
    	
    	
-   	<link href="<c:url value='/static/css/angular-datatables.min.css' />" rel="stylesheet"></link>
+<%--    	<link href="<c:url value='/static/css/angular-datatables.min.css' />" rel="stylesheet"></link> --%>
    	<link href="<c:url value='/static/css/dataTables.bootstrap4.min.css' />" rel="stylesheet"></link>
    	
   </head>
@@ -52,6 +52,9 @@
 	<div style="padding-left: 150px;padding-right: 150px;padding-top: 5rem;background-color: white;">
 		<ui-view></ui-view>	
 	</div>
+	
+	<script src="<c:url value='/static/js/libraries/jquery-3.2.1.min.js' />"></script>
+	
     
     <script src="<c:url value='/static/js/libraries/loader.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular.min.js' />"></script>
@@ -63,19 +66,19 @@
 
     <script src="<c:url value='/static/js/libraries/angular-material.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-ui-router.min.js' />"></script>
-    <script src="<c:url value='/static/js/libraries/jquery-3.2.1.slim.min.js' />"></script>
+    
     <script src="<c:url value='/static/js/libraries/moment.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/es.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-moment.min.js' />"></script>  
     <script src="<c:url value='/static/js/libraries/bootstrap-datetimepicker.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-bootstrap-datetimepicker-directive.js' />"></script>
     
-    
+    <script src="<c:url value='/static/js/libraries/popper.min.js' />"></script>
     
     
     <script src="<c:url value='/static/js/libraries/jquery.dataTables.min.js' />"></script>
-    <script src="<c:url value='/static/js/libraries/angular-datatables.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/dataTables.bootstrap4.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-datatables.min.js' />"></script>
     
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/session_service.js' />"></script>
@@ -86,7 +89,7 @@
     <script src="<c:url value='/static/js/service/harvest_service.js' />"></script>
        
 
-	<script src="<c:url value='/static/js/libraries/popper.min.js' />"></script>
+	
 	<script src="<c:url value='/static/js/libraries/bootstrap.min.js' />"></script>
 	
     

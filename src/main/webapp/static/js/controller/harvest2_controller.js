@@ -1,82 +1,53 @@
 'use strict';
 
-App.controller('Harvest2Controller', ['$scope','HarvestService','DTOptionsBuilder', 'DTColumnBuilder',
-	function($scope,HarvestService, DTOptionsBuilder, DTColumnBuilder) {
+App.controller('Harvest2Controller', ['$scope','HarvestService','DTOptionsBuilder', 'DTColumnBuilder','$http', '$q',
+	function($scope,HarvestService, DTOptionsBuilder, DTColumnBuilder,$http, $q) {
 	
-//	production();
-//	
-//	$scope.editHarvest = editHarvest; 
-//	
-//	
-//	function production() {
-//		HarvestService.allProduction().then(function(d) {
-//			for(var i = 0; i < d.length; i++){
-//				var date = moment(d[i].date).format('LL');
-//				d[i].formatDate = date;
-//			}
-//			$scope.listHarvest = d;
-//			console.log($scope.listHarvest);
-//			$('#example2').DataTable( {
-//				language: {
-//                    sZeroRecords: 'No se encontraron resultados',
-//                    sInfo: 'Mostrando registros del _START_ al _END_ de _TOTAL_ registros',
-//                    sLengthMenu: 'Mostrar _MENU_ registros',
-//                    sSearch: 'Buscar:',
-//                    buttons: {
-//                        pageLength: {
-//                            _: "Mostrar %d registros",
-//                            '-1': "Mostrar todo"
-//                        }
-//                    },
-//                    oPaginate: {
-//                        sFirst: 'Primero',
-//                        sLast: 'Último',
-//                        sNext: 'Siguiente',
-//                        sPrevious: 'Anterior'
-//                    }
-//                },
-//		        data: d,
-//		        columns: [
-//		        	{ data:'weight', title: "Peso Total", },
-//		        	{ data:'price', title: "Precio Total" },
-//		        	{title:"Precio por Kilo",render: function (data, type, full, meta) {
-//		        		return '$ '+full.price;
-//		        		}	
-//		        	},
-//		            {title: "Fecha",render: function (data, type, full, meta) {
-//	            		return moment(full.date).format('ll');
-//	            		}
-//		        	},
-//		        	{data: function (fb) {
-//		        		var btnSave = '<button type="button" class="btn btn-outline-success" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
-//						var btnDelete = '<button type="button" class="btn btn-outline-danger" style="margin-left: 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
-//						return btnSave + btnDelete;
-//						}
-//		        	}
-//		        ]
-//		    } );
-//			
-//		}, 
-//		function(errResponse) {
-//			console.error('Error lista de producción');
-//		});
-//	};
+	var vm = this;
 	
+	vm.displayTable = false;
 	
+	vm.dtOptions = DTOptionsBuilder.fromFnPromise(function() {
+		var deferred = $q.defer();
+		$http.get('allProduction/').then(function (response) {
+				deferred.resolve(response.data);
+			});
+		
+		return deferred.promise;
+	}).withPaginationType('full_numbers');
+				
+				
+	vm.dtColumns = [
+		DTColumnBuilder.newColumn('weight').withTitle('Kilogramos').renderWith(formatWeight),
+		DTColumnBuilder.newColumn('price').withTitle('Precio').renderWith(formatPrice),
+		DTColumnBuilder.newColumn(null).withTitle('Precio por Kilo').renderWith(saleByKg),
+		DTColumnBuilder.newColumn('date').withTitle('Fecha').renderWith(formatDate),
+		DTColumnBuilder.newColumn(null).withTitle('Opciones').renderWith(actions)
+	];
+		
+	vm.displayTable = true;
 	
-//	var vm = this;
-//    vm.dtOptions = DTOptionsBuilder.fromFnPromise(function() {
-//    	return HarvestService.allProduction();
-//        
-//    }).withPaginationType('full_numbers');
-//    
-//    vm.dtColumns = [
-//        DTColumnBuilder.newColumn('weight').withTitle('Peso Total'),
-//        DTColumnBuilder.newColumn('price').withTitle('Precio')
-//    ];
-//	
-//	 console.log(DTOptionsBuilder);
-//	 console.log(DTColumnBuilder);
+	function actions(data, type, full, meta){
+		var btnSave = '<button type="button" class="btn btn-outline-success" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>';
+		var btnDelete = '<button type="button" class="btn btn-outline-danger" style="margin-left: 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+		return btnSave + btnDelete;
+	}
+	
+	function formatDate(data, type, full, meta){
+		return moment(data).format('ll');
+	}
+	
+	function formatWeight(data, type, full, meta){
+		return data + ' Kg';
+	}
+	
+	function formatPrice(data, type, full, meta){
+		return '$ '+ data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' Pesos';
+	}
+	
+	function saleByKg(data, type, full, meta){
+		return '$ ' + (full.price / full.weight).toLocaleString() + ' Pesos';
+	}
 	
 	}
 
