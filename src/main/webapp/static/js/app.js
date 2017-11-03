@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('myApp', ['datatables','ui.router', 'ngMaterial', 'ngMessages', 'angularMoment', 'datetimepicker']);
+var App = angular.module('myApp', ['datatables','datatables.buttons', 'ui.router', 'ngMaterial', 'ngMessages', 'angularMoment', 'datetimepicker']);
 
 var AppLogin = angular.module('myAppLogin',[]);
 

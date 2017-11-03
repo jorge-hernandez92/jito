@@ -13,6 +13,8 @@
    	
 <%--    	<link href="<c:url value='/static/css/angular-datatables.min.css' />" rel="stylesheet"></link> --%>
    	<link href="<c:url value='/static/css/dataTables.bootstrap4.min.css' />" rel="stylesheet"></link>
+   	<link href="<c:url value='/static/css/buttons.dataTables.min.css' />" rel="stylesheet"></link>
+   
    	
   </head>
   <body  class="ng-cloak" >
@@ -79,6 +81,18 @@
     <script src="<c:url value='/static/js/libraries/jquery.dataTables.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/dataTables.bootstrap4.min.js' />"></script>
     <script src="<c:url value='/static/js/libraries/angular-datatables.min.js' />"></script>
+
+
+    <script src="<c:url value='/static/js/libraries/dataTables.buttons.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/buttons.colVis.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/buttons.flash.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/pdfmake.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/vfs_fonts.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/buttons.html5.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/jszip.min.js' />"></script>
+    <script src="<c:url value='/static/js/libraries/angular-datatables.buttons.min.js' />"></script>
+    
+    
     
     <script src="<c:url value='/static/js/app.js' />"></script>
     <script src="<c:url value='/static/js/service/session_service.js' />"></script>
